@@ -2,7 +2,7 @@ CPP = g++
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 NAME = phonebook
 CFILE = phonebook.cpp
-OFILE = ($(CFILE):.cpp=.o)
+OFILE = $(CFILE:.cpp=.o)
 HFILE = phonebook.hpp
 
 all: $(NAME)
@@ -12,7 +12,7 @@ $(NAME): $(OFILE)
 	@rm -rf $(OFILE)
 
 $(OFILE): $(CFILE)
-	@$(CPP) $(CPPFLAGS) $(HFILE) -c $^ -o $@
+	@$(CPP) $(CPPFLAGS) -c $^ -o $@
 
 fclean:
 	@rm -rf $(NAME)
