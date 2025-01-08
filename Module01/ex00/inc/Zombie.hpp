@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:14:44 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/07 12:04:19 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:43:10 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <string>
+#include "../../Colors.hpp"
 
 class Zombie {
 	public:

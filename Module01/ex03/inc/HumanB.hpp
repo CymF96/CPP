@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:35:51 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/07 16:13:44 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:54:11 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 #include <iostream>
 #include <string>
+#include "../../Colors.hpp"
 #include "Weapon.hpp"
 
 class HumanB {

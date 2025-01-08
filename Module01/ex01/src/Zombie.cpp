@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 11:03:05 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/07 13:01:37 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:51:18 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "../inc/Zombie.hpp"
 
 Zombie::Zombie() : name("") {};
 

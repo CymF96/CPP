@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:37:09 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/07 16:13:41 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:54:06 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 #include <iostream>
 #include <string>
+#include "../../Colors.hpp"
 #include "Weapon.hpp"
 
 class HumanA {

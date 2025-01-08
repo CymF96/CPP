@@ -3,19 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 13:04:25 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/07 14:06:20 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:51:48 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-
-#define RESET       "\033[0m"
-#define BOLD        "\033[1m"
-#define GREEN   "\033[32m"
+#include "../Colors.hpp"
 
 int main() {
 	std::string brain =  "HI THIS IS BRAIN";

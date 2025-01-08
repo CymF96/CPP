@@ -6,7 +6,7 @@ OBJ_DIR = obj
 INC_DIR = inc
 SRC = $(wildcard $(SRC_DIR)/*.cpp)
 OBJ = $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
-COLORS_DIR = ../..
+COLORS_DIR = ..
 COLORS = $(COLORS_DIR)/Colors.hpp
 
 

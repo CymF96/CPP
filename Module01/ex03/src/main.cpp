@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:43:44 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/07 16:33:02 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:53:00 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
-#include "HumanA.hpp"
-#include "HumanB.hpp"
+#include "../inc/Weapon.hpp"
+#include "../inc/HumanA.hpp"
+#include "../inc/HumanB.hpp"
 
 
 int main() {
