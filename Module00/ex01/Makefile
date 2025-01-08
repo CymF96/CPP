@@ -1,9 +1,9 @@
 CPP = g++
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
-NAME = phonebook
-CFILE = phonebook.cpp
+NAME = Phonebook
+CFILE = Phonebook.cpp main.cpp
 OFILE = $(CFILE:.cpp=.o)
-HFILE = phonebook.hpp
+HFILE = Phonebook.hpp
 
 all: $(NAME)
 

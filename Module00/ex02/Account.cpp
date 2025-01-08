@@ -6,14 +6,10 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:10:18 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/03 19:28:45 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/08 08:40:28 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include <ctime>
-#include <sys/time.h>
-#include <iomanip>
 #include "Account.hpp"
 
 int Account::_nbAccounts = 0;
