@@ -10,7 +10,7 @@ all : $(NAME)
 $(NAME): $(OFILES)
 	@$(CXX) $(CXXFLAGS) -o $@ $^
 	
-%.o: %.cpp $(HFILE) 
+%.o: %.cpp $(HFILE)
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:

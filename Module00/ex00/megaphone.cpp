@@ -6,13 +6,13 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:25:41 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/02 17:25:41 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:49:33 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-#include <cctype> 
+#include <cctype>
 
 void	upperstring(std::string &str) // Create a copy of the string it is call. Better to pass the string by reference '&' 
 {
