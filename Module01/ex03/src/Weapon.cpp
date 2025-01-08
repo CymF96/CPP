@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:35:19 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/07 16:30:02 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:53:06 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Weapon.hpp"
+#include "../inc/Weapon.hpp"
 
 Weapon::Weapon(const std::string &inputWeapon) : 
 	type(inputWeapon)

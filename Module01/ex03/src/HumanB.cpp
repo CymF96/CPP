@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:41:02 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/07 16:28:35 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:52:38 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#include "../inc/HumanB.hpp"
 
 HumanB::HumanB(const std::string &inputName) :
 	weapon(0),

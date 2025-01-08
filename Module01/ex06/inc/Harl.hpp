@@ -6,13 +6,13 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 11:10:23 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/08 12:31:02 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:55:19 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-#include "../../../Colors.hpp"
+#include "../../Colors.hpp"
 
 class Harl {
 	public:

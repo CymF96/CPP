@@ -6,11 +6,11 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 11:33:14 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/08 12:16:24 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:54:57 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Harl.hpp"
+#include "../inc/Harl.hpp"
 
 Harl::Harl() {};
 

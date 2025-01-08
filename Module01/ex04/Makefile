@@ -4,7 +4,7 @@ CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 CFILE = main.cpp
 OFILE = $(CFILE:%.cpp=%.o)
 TEXTNAME = NewText.txt
-COLORS_DIR = ../..
+COLORS_DIR = ..
 COLORS = $(COLORS_DIR)/Colors.hpp
 
 all: $(NAME)

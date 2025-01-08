@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:54:02 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/07 15:35:36 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/08 17:52:28 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#include "../inc/HumanA.hpp"
 
 void HumanA::attack() {
 	std::cout << name << " attacks with their " << weapon.getType() << std::endl;	
