@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 12:51:02 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/09 14:59:20 by cofische         ###   ########.fr       */
+/*   Created: 2025/01/09 12:49:56 by cofische          #+#    #+#             */
+/*   Updated: 2025/01/09 16:00:27 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "../Colors.hpp"
+#include "Fixed.hpp"
 
-class Fixed {
+int main( void ) {
+
+	Fixed a; 
+	Fixed b( a );
+	Fixed c;
+	c = b;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
 	
-	public:
-		Fixed();
-		~Fixed();
-		Fixed(const Fixed &other);
-		Fixed& operator=(const Fixed& other);
-
-		int getRawBits(void) const;
-		void setRawBits(int const &raw);
-		
-	private:
-		int fp;
-		static const int bits = 8;
-		
-};
+	return 0;
+}

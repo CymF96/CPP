@@ -6,11 +6,11 @@
 /*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:49:56 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/09 12:50:30 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/09 14:50:13 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include 
+#include "Fixed.hpp"
 
 int main( void ) {
 
