@@ -6,13 +6,14 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:51:02 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/11 09:06:06 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:18:35 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include <iostream>
-#include "../Colors.hpp"
-
+#include "../../Colors.hpp"
+ 
 class Fixed {
 	 
 	public:
@@ -22,11 +23,33 @@ class Fixed {
 		~Fixed();
 		Fixed(const Fixed &other);
 		Fixed &operator=(const Fixed &other);
+		
+		bool operator<(const Fixed &other) const;
+		bool operator>(const Fixed &other) const;
+		bool operator<=(const Fixed &other) const;
+		bool operator>=(const Fixed &other) const;
+		bool operator==(const Fixed &other) const;
+		bool operator!=(const Fixed &other) const;
+		
+		Fixed operator+(const Fixed &other) const;
+		Fixed operator-(const Fixed &other) const;
+		Fixed operator*(const Fixed &other) const;
+		Fixed operator/(const Fixed &other) const;
+		
+		Fixed operator++();
+		Fixed operator++(int);
+		Fixed operator--();
+		Fixed operator--(int);
 
 		int getRawBits(void) const;
 		void setRawBits(int const &raw);
 		float toFloat(void) const;
 		int toInt(void) const;
+		static Fixed &min(Fixed &x, Fixed &y);
+		static Fixed &max(Fixed &x, Fixed &y);
+		static const Fixed &min(const Fixed &x, const Fixed &y);
+		static const Fixed &max(const Fixed &x, const Fixed &y);
+
 		friend std::ostream &operator<<(std::ostream &os, const Fixed &fixed); 
 		
 	private:
@@ -36,4 +59,3 @@ class Fixed {
 };
 
 std::ostream &operator<<(std::ostream &os, const Fixed &fixed);
-
