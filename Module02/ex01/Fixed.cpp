@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:19:03 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/09 17:02:11 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/11 09:05:02 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,15 @@ void Fixed::setRawBits(int const &raw) {
 	fp = raw;
 };
 
-float Fixed::toFloat(void) {
-	fp = static_cast<float>(fp / (1 << bits));
-	return fp;
+float Fixed::toFloat(void) const {
+	return static_cast<float>(fp) / (1 << bits);
 };
 
-int Fixed::toInt(void) {
-	fp = fp >> bits;
-	return fp;
+int Fixed::toInt(void) const {
+	return fp >> bits;
+};
+
+std::ostream &operator<<(std::ostream &os, const Fixed &fixed) {
+	os << fixed.toFloat();
+	return os;
 };

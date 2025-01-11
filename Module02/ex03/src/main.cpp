@@ -6,28 +6,26 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:49:56 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/11 08:29:59 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/11 13:13:31 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "../inc/Fixed.hpp"
+#include "../inc/Point.hpp"
 
-int main( void ) {
-	
-	Fixed a;
-	Fixed const b( 10 );
-	Fixed const c( 42.42f );
-	Fixed const d( b );
-	a = Fixed( 1234.4321f );
-	
-	std::cout << "a is " << a << std::endl;
-	std::cout << "b is " << b << std::endl;
-	std::cout << "c is " << c << std::endl;
-	std::cout << "d is " << d << std::endl;
-	std::cout << "a is " << a.toInt() << " as integer" << std::endl;
-	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
-	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
-	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
-	
+int main() {
+
+	Point A(Fixed(1.0f), Fixed(1.0f));
+	Point B(Fixed(3.0f), Fixed(4.0f));
+	Point C(Fixed(5.0f), Fixed(2.0f));
+	Point P(Fixed(2.0f), Fixed(2.0f));
+
+
+	if (isPointInsideTriangle(A, B, C, P)) {
+		std::cout << "The point is inside the triangle." << std::endl;
+	} else {
+		std::cout << "The point is outside the triangle." << std::endl;
+	}
+
 	return 0;
 }
