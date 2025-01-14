@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:51:02 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/11 13:18:35 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/14 09:58:26 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ class Fixed {
 		static Fixed &max(Fixed &x, Fixed &y);
 		static const Fixed &min(const Fixed &x, const Fixed &y);
 		static const Fixed &max(const Fixed &x, const Fixed &y);
-
-		friend std::ostream &operator<<(std::ostream &os, const Fixed &fixed); 
 		
 	private:
 		int fp;
