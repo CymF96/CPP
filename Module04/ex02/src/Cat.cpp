@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:25:04 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/14 18:28:59 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/14 18:39:09 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ Cat::Cat(const Cat &other) : Animal(other) {
 Cat &Cat::operator=(const Cat &other) {
 	std::cout << BOLD BLUE << " Cat copy assignment constructor has been created" << RESET << std::endl;
 		if (this != &other) {
-		Animal::operator=(other);
-		this->setType(other.getType());
-		delete this->brain;
-		this->brain = new Brain(*other.brain);
+			Animal::operator=(other);
+			this->setType(other.getType());
+			delete this->brain;
+			this->brain = new Brain(*other.brain);
 		}
 	return *this;
 };

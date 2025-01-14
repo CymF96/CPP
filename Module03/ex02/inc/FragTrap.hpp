@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 12:49:04 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/14 12:52:26 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/14 18:45:15 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,7 @@ class FragTrap : public ClapTrap {
 	public:
 		FragTrap(const std::string &inputName);
 		~FragTrap();
+		FragTrap(const FragTrap &other);
+		FragTrap &operator=(const FragTrap &other);
 		void highFivesGuys(void);
 };
