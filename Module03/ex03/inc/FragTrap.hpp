@@ -1,38 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 12:51:02 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/14 09:58:02 by cofische         ###   ########.fr       */
+/*   Created: 2025/01/14 12:49:04 by cofische          #+#    #+#             */
+/*   Updated: 2025/01/14 13:58:39 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include <iostream>
-#include "../Colors.hpp"
+#include <string>
+#include "../../Colors.hpp"
+#include "Claptrap.hpp"
 
-class Fixed {
-	 
+class FragTrap : virtual public ClapTrap {
 	public:
-		Fixed();
-		Fixed(const int &a);
-		Fixed(const float &a);
-		~Fixed();
-		Fixed(const Fixed &other);
-		Fixed &operator=(const Fixed &other);
-
-		int getRawBits(void) const;
-		void setRawBits(int const &raw);
-		float toFloat(void) const;
-		int toInt(void) const;
-		
-	private:
-		int fp;
-		static const int bits = 8;
-		
+		FragTrap(const std::string &inputName);
+		~FragTrap();
+		void highFivesGuys(void);
 };
-
-std::ostream &operator<<(std::ostream &os, const Fixed &fixed);
-

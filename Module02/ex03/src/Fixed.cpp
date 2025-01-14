@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:19:03 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/11 11:35:38 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/14 10:28:02 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ Fixed::Fixed(const Fixed &other) : fp(other.fp) {
 	// std::cout << MAGENTA << "Copy constructor called" << RESET << std::endl;
 };
 
-/*OPERATOR OVERLOADED*/
-
 Fixed& Fixed::operator=(const Fixed &other) {
 	std::cout << BLUE << "Copy Assignment operator called" << RESET << std::endl;
 	if (this != &other) {
@@ -42,6 +40,7 @@ Fixed& Fixed::operator=(const Fixed &other) {
 	return *this;
 };
 
+/*OPERATOR OVERLOADED*/
 	/*COMPARISON OPERATORS*/
 bool Fixed::operator<(const Fixed &other) const {
 	return this->fp < other.fp;

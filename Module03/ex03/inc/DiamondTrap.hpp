@@ -1,38 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   DiamondTrap.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/09 12:51:02 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/14 09:58:02 by cofische         ###   ########.fr       */
+/*   Created: 2025/01/14 13:04:00 by cofische          #+#    #+#             */
+/*   Updated: 2025/01/14 13:54:22 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "../Colors.hpp"
+#include <string>
+#include "../../Colors.hpp"
+#include "../inc/ScavTrap.hpp"
+#include "../inc/FragTrap.hpp"
 
-class Fixed {
-	 
+class DiamondTrap : public ScavTrap, public FragTrap {
 	public:
-		Fixed();
-		Fixed(const int &a);
-		Fixed(const float &a);
-		~Fixed();
-		Fixed(const Fixed &other);
-		Fixed &operator=(const Fixed &other);
-
-		int getRawBits(void) const;
-		void setRawBits(int const &raw);
-		float toFloat(void) const;
-		int toInt(void) const;
+		DiamondTrap(const std::string &inputName);
+		~DiamondTrap();
 		
+		void whoAmI();
+		void attack(const std::string &target);
+	
 	private:
-		int fp;
-		static const int bits = 8;
-		
+		const std::string name;
 };
-
-std::ostream &operator<<(std::ostream &os, const Fixed &fixed);
-
