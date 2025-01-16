@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 15:41:02 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/08 17:52:38 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:22:27 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ HumanB::HumanB(const std::string &inputName) :
 	{};
 
 HumanB::~HumanB() {
-	std::cout << name << " was destroy" << std::endl;
+	std::cout << BOLD RED << name << RESET << " was destroy" << std::endl;
 };
 
 void HumanB::setWeapon(Weapon &inputWeapon) {
@@ -26,5 +26,5 @@ void HumanB::setWeapon(Weapon &inputWeapon) {
 }
 
 void HumanB::attack() {
-	std::cout << name << " attacks with their " << weapon->getType() << std::endl;	
+	std::cout << BOLD GREEN << name << RESET << " attacks with their " << BOLD YELLOW << weapon->getType() << RESET << std::endl;	
 };

@@ -1,4 +1,4 @@
-CPP = g++
+CPP = c++
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98
 NAME = megaphone
 CFILE = megaphone.cpp
@@ -7,6 +7,7 @@ OFILE = megaphone.o
 all: $(NAME)
 
 $(NAME): $(OFILE)
+	@echo "Making ./Megaphone"
 	@$(CPP) $(CPPFLAGS) -o $@ $^
 	@rm -rf $(OFILE)
 
@@ -14,6 +15,7 @@ $(OFILE): $(CFILE)
 	@$(CPP) $(CPPFLAGS) -c $^ -o $@
 
 fclean:
+	@echo "Cleaning Megaphone"
 	@rm -rf $(NAME)
 
 re: fclean all
