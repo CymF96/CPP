@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:25:37 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/08 08:32:59 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/16 12:22:11 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.hpp"
+#include "../inc/PhoneBook.hpp"
 
 int	main() {
 	std::string userName, userLastName, userNickName, userDarkestSecret, input = "";
@@ -30,19 +30,25 @@ int	main() {
 		if (!input.compare("ADD")) {
 			while (1) {
 				std::cout << "Please enter the following information: " << std::endl << BOLD GREEN << "name: " << RESET;
-				std::cin >> userName;
+				std::cin.ignore();
+				std::getline(std::cin, userName);
 				std::cout << BOLD GREEN << "last_name: " << RESET;
-				std::cin >> userLastName;
+				std::cin.ignore();
+				std::getline(std::cin, userLastName);
 				std::cout << BOLD GREEN << "nick_name: " << RESET;
-				std::cin >> userNickName;
+				std::cin.ignore();
+				std::getline(std::cin, userNickName);
 				std::cout << BOLD GREEN << "darkest_secret " << RESET << "(please use " << BOLD << "\"\"): " << RESET;;
 				std::cin.ignore();
 				std::getline(std::cin, userDarkestSecret);
 				std::cout << BOLD GREEN << "phone Number " << RESET << "(for extension, please use this format: " << BOLD << "00XX): " << RESET;
 				std::cin >> userPhoneNumber;
 				std::cout << "\n";
-				if (phoneBook.addContact(userName, userLastName, userNickName, userDarkestSecret, userPhoneNumber) == 0)
-					break ;
+			    if (phoneBook.addContact(userName, userLastName, userNickName, userDarkestSecret, userPhoneNumber) == 0) {
+					break;
+				} else {
+					std::cout << "Please check your input and try again.\n" << std::endl;
+				}
 			}
 		}
 		else if (!input.compare("SEARCH")) {

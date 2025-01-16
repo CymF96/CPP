@@ -1,24 +1,38 @@
-CPP = g++
-CPPFLAGS = -Wall -Werror -Wextra -std=c++98
+
 NAME = Phonebook
-CFILE = Phonebook.cpp main.cpp
-OFILE = $(CFILE:.cpp=.o)
-HFILE = Phonebook.hpp
+CXX = c++
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+INC_DIR = inc
+SRC_DIR = src
+OBJ_DIR = obj
+SRC = $(SRC_DIR)/Contact.cpp \
+      $(SRC_DIR)/PhoneBook.cpp \
+      $(SRC_DIR)/main.cpp
+OBJ = $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 COLORS_DIR = ..
 COLORS = $(COLORS_DIR)/Colors.hpp
+INC = $(INC_DIR)/Contact.hpp \
+      $(INC_DIR)/PhoneBook.hpp
 
 all: $(NAME)
 
-$(NAME): $(OFILE)
-	@$(CPP) $(CPPFLAGS) $(HFILE) -o $@ $^
-	@rm -rf $(OFILE)
+$(NAME): $(OBJ)
+	@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
+	@echo "Executable $(NAME) created!"
 
-$(OFILE): $(CFILE) $(HFILE) $(COLORS)
-	@$(CPP) $(CPPFLAGS) -c $^ -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(OBJ_DIR)
+	@$(CXX) $(CXXFLAGS) -I $(INC_DIR) -c $< -o $@
+	@echo "Compiled $< into $@"
 
-fclean:
-	@rm -rf $(NAME)
+clean:
+	@rm -rf $(OBJ_DIR)
+	@echo "Object files and directories removed."
+
+fclean: clean
+	@rm -f $(NAME)
+	@echo "Executable $(NAME) removed."
 
 re: fclean all
 
-.PHONY: all fclean re
+.PHONY: all clean fclean re

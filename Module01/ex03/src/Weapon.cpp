@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:35:19 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/08 17:53:06 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/16 13:21:56 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ Weapon::Weapon(const std::string &inputWeapon) :
 	{};
 
 Weapon::~Weapon() {
-	std::cout << getType() << " has been destroy" << std::endl;
+	std::cout << BOLD RED << getType() << RESET << " has been destroy" << std::endl;
 };
 
 const std::string Weapon::getType(void) {

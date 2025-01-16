@@ -1,29 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 08:31:40 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/08 08:39:30 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/16 12:08:55 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Phonebook.hpp"
-
-Contact::Contact() : name(""), lastName(""), nickName(""), darkestSecret(""), phoneNumber(0) {}; //Constructor to initiate Contact objects
-Contact::~Contact() { std::cout << "Contact has been destroy\n";};
-void Contact::setName(std::string &userName) {name = userName;}; //Using setter and getter to assign variable from private and readonly variable when used ++ using reference to avoid unecessary copying of variable and overload stack memory
-void Contact::setLastName(std::string &userLastName) {lastName = userLastName;};
-void Contact::setNickName(std::string &userNickName) {nickName = userNickName;};
-void Contact::setDarkestSecret(std::string &userDarkestSecret) { darkestSecret = userDarkestSecret; };
-void Contact::setPhoneNumber(int &userPhoneNumber) { phoneNumber = userPhoneNumber; };
-std::string Contact::getName() { return name; };
-std::string Contact::getLastName() { return lastName; };
-std::string Contact::getNickName() { return nickName; };
-std::string Contact::getDarkestSecret() { return darkestSecret; };
-int Contact::getPhoneNumber() { return phoneNumber; };
+#include "../inc/PhoneBook.hpp"
+#include "../inc/Contact.hpp"
 
 Phonebook::Phonebook() : currentIndex(0){};
 Phonebook::~Phonebook() { std::cout << "Phonebook has been destroy\n";};
@@ -51,8 +39,7 @@ void Phonebook::printFields(std::string str)
 	}
 };
 
-int Phonebook::printPhonebook()
-{ // print all Phonebook
+int Phonebook::printPhonebook() {
 	if (contact[0].getName().empty())
 		return 1;
 	for (int i = 0; i < 8; i++)
@@ -66,8 +53,7 @@ int Phonebook::printPhonebook()
 	return 0;
 };
 
-void Phonebook::increaseIndex(int &index)
-{ // increasing index so the new contact is always between 1 and 8 -- 0 and 7 in array count
+void Phonebook::increaseIndex(int &index) {
 	if (index < 7)
 		index++;
 	else
@@ -75,11 +61,10 @@ void Phonebook::increaseIndex(int &index)
 	setIndex(index);
 };
 
-int Phonebook::addContact(std::string &name, std::string &lastName, std::string &nickName, std::string &darkestSecret, int &phoneNumber)
-{
+int Phonebook::addContact(std::string &name, std::string &lastName, std::string &nickName, std::string &darkestSecret, int &phoneNumber) {
 	if (name.empty() || lastName.empty() || nickName.empty() || darkestSecret.empty() || !phoneNumber)
 	{
-		std::cout << "Error. Contact can't have empty fields" << std::endl;
+		std::cout << "Error. Contact can't have empty fields." << std::endl;
 		return 1;
 	}
 	else
