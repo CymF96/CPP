@@ -6,21 +6,20 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 12:01:50 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/08 17:55:33 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:14:32 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Harl.hpp"
 
 int main(int ac, char **av) {
+	Harl harl;
+	std::cout << std::endl;
 	
 	if (ac < 2)
-		return (1);
-	std::string str(av[1]);
-	Harl harl;
-	if (str.compare("I am not sure how tired I am today...") == 0)
 		std::cout << "[ Probably complaining about insignificant problems ]\n" << std::endl;
 	else {
+		std::string str(av[1]);
 		harl.complain(str);
 		std::cout << std::endl;
 	}

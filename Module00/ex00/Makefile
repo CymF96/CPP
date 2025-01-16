@@ -9,12 +9,14 @@ all: $(NAME)
 $(NAME): $(OFILE)
 	@echo "Making ./Megaphone"
 	@$(CPP) $(CPPFLAGS) -o $@ $^
-	@rm -rf $(OFILE)
 
 $(OFILE): $(CFILE)
 	@$(CPP) $(CPPFLAGS) -c $^ -o $@
 
-fclean:
+clean:
+	@rm -rf $(OFILE)
+
+fclean: clean
 	@echo "Cleaning Megaphone"
 	@rm -rf $(NAME)
 

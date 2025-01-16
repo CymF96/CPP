@@ -10,8 +10,8 @@ COLORS = $(COLORS_DIR)/Colors.hpp
 all: $(NAME)
 
 $(NAME): $(OFILE)
+	@echo "Making ./Replace"
 	@$(CXX) $(CXXFLAGS) -o $@ $^
-	@rm -f $(OFILE)
 
 $(OFILE): $(CFILE) $(COLORS)
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
@@ -20,6 +20,7 @@ clean:
 	@rm -f $(OFILE)
 
 fclean: clean
+	@echo "Cleaning ./Replace"
 	@rm -f $(NAME) $(TEXTNAME)
 
 re : fclean all

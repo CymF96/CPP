@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 11:03:05 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/08 17:45:15 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/16 16:37:11 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,5 @@ Zombie::~Zombie() {
 
 void Zombie::announce(void) {
 	std::cout  << BOLD GREEN << name << RESET << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	
 }

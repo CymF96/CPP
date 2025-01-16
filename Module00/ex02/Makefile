@@ -1,4 +1,4 @@
-CXX = g++
+CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 NAME = Accounts
 CFILE = Account.cpp tests.cpp
@@ -8,6 +8,7 @@ HFILE = Account.hpp
 all : $(NAME)
 
 $(NAME): $(OFILES)
+	@echo "Making ./Account"
 	@$(CXX) $(CXXFLAGS) -o $@ $^
 	
 %.o: %.cpp $(HFILE)
@@ -17,6 +18,7 @@ clean:
 	@rm -rf $(OFILES)
 
 fclean: clean
+	@echo "Cleaning ./Account"
 	@rm -rf $(NAME)
 
 re: fclean all

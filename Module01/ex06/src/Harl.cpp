@@ -6,13 +6,15 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 11:33:14 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/08 17:55:28 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:17:31 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Harl.hpp"
 
-Harl::Harl() {};
+Harl::Harl() {
+	std::cout << "Harl has been generated" << std::endl;
+};
 
 Harl::~Harl() {
 	std::cout << "Harl has been destroy" << std::endl;
@@ -20,7 +22,6 @@ Harl::~Harl() {
 
 void Harl::complain(const std::string &level) {
 	void (Harl::*levelPtr[4])() = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
-	void (Harl::*switchPtr)() = &Harl::switchOff;
 	std::string levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	
 	int check = 0;
@@ -32,12 +33,10 @@ void Harl::complain(const std::string &level) {
 				(this->*levelPtr[j])();
 		}
 	}
-	if (level == "SWITCH") {
-		check = 1;
-		(this->*switchPtr)();
+	if (!check)	{
+		std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
+		switchOff();
 	}
-	if (!check)	
-		std::cout <<"Wrong level ID" << std::endl;
 };
 
 void Harl::debug(void) {
@@ -57,5 +56,5 @@ void Harl::error(void) {
 };
 
 void Harl::switchOff(void) {
-	std::cout << "[ SWITCH ]\nHarl has been switch off. You can breath now" << std::endl;
+	std::cout << "Harl has been switch off. You can breath now!" << std::endl;
 };
