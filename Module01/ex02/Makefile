@@ -9,6 +9,7 @@ COLORS = $(COLORS_DIR)/Colors.hpp
 all : $(NAME)
 
 $(NAME): $(OFILE)
+	@echo "Making MemAddress"
 	@$(CXX) $(CXXFLAGS) $(OFILE) -o $(NAME)
 
 $(OFILE): $(CFILE) $(COLORS)
@@ -18,6 +19,7 @@ clean:
 	@rm -f $(OFILE)
 
 fclean: clean
+	@echo "Cleaning MemAddress"
 	@rm -f $(NAME)
 
 re: fclean all

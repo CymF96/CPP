@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 14:37:09 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/08 17:54:06 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/16 17:28:15 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@
 
 class HumanA {
 	public:
-		HumanA(const std::string &inputName, const Weapon &inputWeapon);
+		HumanA(const std::string &inputName, Weapon &inputWeapon);
 		~HumanA();
-		void attack();	
+		void attack();
+		void setWeapon(Weapon &inputWeapon);
 
-	
 	private:
 		std::string name;
-		Weapon weapon;
+		Weapon &weapon;
 };

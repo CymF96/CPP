@@ -6,13 +6,15 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 11:33:14 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/08 17:54:57 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/16 18:05:40 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Harl.hpp"
 
-Harl::Harl() {};
+Harl::Harl() {
+	std::cout << "Harl has been generated" << std::endl;
+};
 
 Harl::~Harl() {
 	std::cout << "Harl has been destroy" << std::endl;

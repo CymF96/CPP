@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 08:31:40 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/16 12:08:55 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/16 16:17:20 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,15 @@
 #include "../inc/Contact.hpp"
 
 Phonebook::Phonebook() : currentIndex(0){};
-Phonebook::~Phonebook() { std::cout << "Phonebook has been destroy\n";};
-void Phonebook::setIndex(int &i) { currentIndex = i; };
-int Phonebook::getIndex() { return currentIndex; };
+Phonebook::~Phonebook() {};
+
+void Phonebook::setIndex(int &i) { 
+	currentIndex = i; 
+};
+
+int Phonebook::getIndex() { 
+	return currentIndex; 
+};
 
 void Phonebook::printFields(std::string str)
 {
@@ -62,21 +68,13 @@ void Phonebook::increaseIndex(int &index) {
 };
 
 int Phonebook::addContact(std::string &name, std::string &lastName, std::string &nickName, std::string &darkestSecret, int &phoneNumber) {
-	if (name.empty() || lastName.empty() || nickName.empty() || darkestSecret.empty() || !phoneNumber)
-	{
-		std::cout << "Error. Contact can't have empty fields." << std::endl;
-		return 1;
-	}
-	else
-	{
-		int index = getIndex();
-		contact[index].setName(name);
-		contact[index].setLastName(lastName);
-		contact[index].setNickName(nickName);
-		contact[index].setDarkestSecret(darkestSecret);
-		contact[index].setPhoneNumber(phoneNumber);
-		increaseIndex(index);
-	}
+	int index = getIndex();
+	contact[index].setName(name);
+	contact[index].setLastName(lastName);
+	contact[index].setNickName(nickName);
+	contact[index].setDarkestSecret(darkestSecret);
+	contact[index].setPhoneNumber(phoneNumber);
+	increaseIndex(index);
 	return 0;
 };
 
