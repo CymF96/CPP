@@ -15,17 +15,41 @@
 
 int main() {
 
-	Point A(Fixed(1.0f), Fixed(1.0f));
-	Point B(Fixed(3.0f), Fixed(4.0f));
-	Point C(Fixed(5.0f), Fixed(2.0f));
-	Point P(Fixed(2.0f), Fixed(2.0f));
+	Fixed Ax, Ay, Bx, By, Cx, Cy, Px, Py;
 
+	std::cout 	<< BOLD << "*************************\nWelcome to BSP program!\n*************************\n\n" << RESET 
+				<< "Please enter the triangle coordinates and the point to check:" << std::endl;
+	std::cout << "A -x: ";
+	std::cin >> Ax;
+	std::cout << "A -y: ";
+	std::cin >> Ay;
+	std::cout << "B -x: ";
+	std::cin >> Bx;
+	std::cout << "B -y: ";
+	std::cin >> By;
+	std::cout << "C -x: ";
+	std::cin >> Cx;
+	std::cout << "C -y: ";
+	std::cin >> Cy;
+	std::cout << "P -x: ";
+	std::cin >> Px;
+	std::cout << "P -y: ";
+	std::cin >> Py;
+	std::cout << std::endl;
+
+	Point A(Ax, Ay);
+	Point B(Bx, By);
+	Point C(Cx, Cy);
+	Point P(Px, Py);
 
 	if (isPointInsideTriangle(A, B, C, P)) {
-		std::cout << "The point is inside the triangle." << std::endl;
+		std::cout << "\nBSP result: "; 
+		std::cout << BOLD BLUE <<"The point is inside the triangle." << RESET << std::endl;
 	} else {
-		std::cout << "The point is outside the triangle." << std::endl;
+		std::cout << "\nBSP result: " << std::endl; 
+		std::cout << BOLD RED << "The point is outside the triangle." << RESET << std::endl;
 	}
+	std::cout << std::endl;
 
 	return 0;
 }

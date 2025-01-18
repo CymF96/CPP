@@ -14,15 +14,15 @@
 #include "../inc/Fixed.hpp"
 
 Point::Point(Fixed inputX, Fixed inputY) : x(inputX), y(inputY) {
-	std::cout << "Default Point constructor called\n" << std::endl;
+	std::cout << "Default Point constructor called" << std::endl;
 };
 
 Point::~Point() {
-	std::cout << "Point deconstructor called\n" << std::endl;
+	std::cout << "Point deconstructor called" << std::endl;
 };
 
 Point::Point(const Point &other) : x(other.x), y(other.y) {
-	std::cout << "Point copy constructor called\n" << std::endl;
+	std::cout << "Point copy constructor called" << std::endl;
 };
 
 Point &Point::operator=(const Point &other) {

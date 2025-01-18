@@ -11,7 +11,7 @@ SRC = 	$(SRC_DIR)/BSP.cpp \
 OBJ = $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
 COLORS_DIR = ..
 COLORS = $(COLORS_DIR)/Colors.hpp
-INC = 	$(INC_DIR)/Fixed.hpp
+INC = 	$(INC_DIR)/Fixed.hpp \
 		$(INC_DIR)/Point.hpp
 
 all: $(NAME)

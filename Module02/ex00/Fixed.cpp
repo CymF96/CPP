@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:19:03 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/09 15:33:51 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/17 15:41:50 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ Fixed::Fixed(const Fixed &other) : fp(other.fp) {
 	std::cout << MAGENTA << "Copy constructor called" << RESET << std::endl;
 };
 
-Fixed& Fixed::operator=(const Fixed &other) {
+Fixed &Fixed::operator=(const Fixed &other) {
 	std::cout << BLUE << "Copy Assignment operator called" << RESET << std::endl;
 	if (this != &other) {
 		fp = other.fp;

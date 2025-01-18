@@ -45,6 +45,7 @@ class Fixed {
 		void setRawBits(int const &raw);
 		float toFloat(void) const;
 		int toInt(void) const;
+		void setFromFloat(float &f_nb);		
 		static Fixed &min(Fixed &x, Fixed &y);
 		static Fixed &max(Fixed &x, Fixed &y);
 		static const Fixed &min(const Fixed &x, const Fixed &y);
@@ -57,3 +58,4 @@ class Fixed {
 };
 
 std::ostream &operator<<(std::ostream &os, const Fixed &fixed);
+std::istream& operator>>(std::istream& is, Fixed& fixed);

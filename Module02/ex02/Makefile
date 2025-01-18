@@ -11,7 +11,6 @@ all: $(NAME)
 
 $(NAME): $(OFILES)
 	@$(CXX) $(CXXFLAGS) $(OFILES) -o $(NAME)
-	@rm -f $(OFILES)
 	@echo "making Fixed program"
 
 $(OFILE): $(CFILE) $(HFILE) $(COLORS)
