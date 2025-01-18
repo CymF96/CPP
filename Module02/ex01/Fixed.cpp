@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:19:03 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/11 09:05:02 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:16:47 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ Fixed::Fixed() : fp(0) {
 }
 
 Fixed::Fixed(const int &i_nb) { 
-	std::cout << YELLOW << "Int constructor called" << RESET << std::endl;
+	std::cout << GREEN << "Int constructor called" << RESET << std::endl;
 	fp = i_nb << bits;
 }
 
 Fixed::Fixed(const float &f_nb) { 
-	std::cout << YELLOW << "Float constructor called" << RESET << std::endl;
+	std::cout << CYAN << "Float constructor called" << RESET << std::endl;
 	fp = static_cast<int>(f_nb * (1 << bits));
 }
 

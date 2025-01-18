@@ -32,8 +32,6 @@ Fixed::Fixed(const Fixed &other) : fp(other.fp) {
 	// std::cout << MAGENTA << "Copy constructor called" << RESET << std::endl;
 };
 
-/*OPERATOR OVERLOADED*/
-
 Fixed& Fixed::operator=(const Fixed &other) {
 	std::cout << BLUE << "Copy Assignment operator called" << RESET << std::endl;
 	if (this != &other) {
@@ -134,11 +132,6 @@ int Fixed::toInt(void) const {
 	return fp >> bits;
 };
 
-std::ostream &operator<<(std::ostream &os, const Fixed &fixed) {
-	os << fixed.toFloat();
-	return os;
-};
-
 Fixed &Fixed::min(Fixed &x, Fixed &y) {
 	return (x < y) ? x : y;
 };
@@ -155,3 +148,9 @@ const Fixed &Fixed::max(const Fixed &x, const Fixed &y) {
 	return (x > y) ? x : y;
 };
 
+/*OPERATOR OVERLOADED*/
+
+std::ostream &operator<<(std::ostream &os, const Fixed &fixed) {
+	os << fixed.toFloat();
+	return os;
+};

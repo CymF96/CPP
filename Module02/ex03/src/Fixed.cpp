@@ -154,3 +154,13 @@ const Fixed &Fixed::max(const Fixed &x, const Fixed &y) {
 	return (x > y) ? x : y;
 };
 
+std::istream& operator>>(std::istream& is, Fixed& fixed) {
+	float input;
+	is >> input;
+	fixed.setFromFloat(input);
+	return is;
+}
+
+void Fixed::setFromFloat(float &f_nb) {
+	fp = static_cast<int>(f_nb * (1 << bits));
+};
