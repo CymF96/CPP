@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 17:15:31 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/14 17:59:21 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:54:40 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 Brain::Brain() {
 	std::cout << BOLD YELLOW << "Brain creation 🧠" << RESET << std::endl;
+	for (int i = 0; i < 100; i++)
+		ideas[i] = "Nothing";
 }
 
 Brain::~Brain() {
@@ -27,11 +29,11 @@ Brain::Brain(const Brain &other) {
 }
 
 Brain &Brain::operator=(const Brain &other) {
-    std::cout << BOLD YELLOW << "Copy Brain assignment" << RESET << std::endl;
-    
-    if (this != &other) {
-        for (int i = 0; i < 100; i++)
-        	ideas[i] = other.ideas[i];
-    }
-    return *this;
+	std::cout << BOLD YELLOW << "Copy Brain assignment" << RESET << std::endl;
+	
+	if (this != &other) {
+		for (int i = 0; i < 100; i++)
+			ideas[i] = other.ideas[i];
+	}
+	return *this;
 }
