@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 16:29:59 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/14 17:41:42 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/20 16:54:08 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ Dog::~Dog() {
 Dog::Dog(const Dog &other) : Animal(other) {
 	std::cout << BOLD BLUE << " Dog copy constructor has been created" << RESET << std::endl;	
 	this->type = other.type;
+	this->brain = new Brain(*other.brain);
 };
 
 Dog &Dog::operator=(const Dog &other) {

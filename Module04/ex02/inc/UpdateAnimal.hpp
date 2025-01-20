@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 15:55:39 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/14 18:29:55 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/20 17:09:42 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Animal {
 		
 		std::string getType() const;
 		void setType(const std::string &inputType);
-		void virtual makeSound() const = 0;
+		virtual void makeSound() const = 0;
 
 		
 	protected:
