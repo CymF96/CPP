@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:49:56 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/11 11:27:04 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:45:53 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,15 +29,10 @@ int main( void ) {
 	std::cout << BOLD BLUE << "\narithmetic operators" << RESET << std::endl;
 	std::cout << "\na = " << a << std::endl;
 	std::cout << "b = " << b << std::endl;
-	Fixed sum = a + b;
-	Fixed difference = a - b;
-	Fixed product = a * b;
-	Fixed division = a / b;
-	
-	std::cout << "\na + b = " << sum << std::endl;
-	std::cout << "a - b = " << difference << std::endl;
-	std::cout << "a * b = " << product << std::endl;
-	std::cout << "a / b = " << division << std::endl;
+	std::cout << "\na + b = " << a + b << std::endl;
+	std::cout << "a - b = " << a - b << std::endl;
+	std::cout << "a * b = " << a * b << std::endl;
+	std::cout << "a / b = " << a / b << std::endl;
 
 	std::cout << BOLD BLUE << "\ncomparison operators" << RESET << std::endl;
 	std::cout << "\na = " << a << std::endl;

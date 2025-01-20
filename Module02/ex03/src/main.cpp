@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:49:56 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/11 13:13:31 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/20 12:05:01 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Fixed.hpp"
 #include "../inc/Point.hpp"
+#include "../inc/BSP.hpp"
 
 int main() {
 
