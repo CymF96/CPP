@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 14:19:03 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/14 10:28:02 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/20 12:03:28 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ Fixed::Fixed() : fp(0) {
 	// std::cout << YELLOW << "Default constructor called" << RESET << std::endl;
 }
 
-Fixed::Fixed(const int &i_nb) : fp(i_nb << bits) { 
+Fixed::Fixed(const int &i_nb) : fp(roundf((i_nb << fb))) { 
 	// std::cout << YELLOW << "Int constructor called" << RESET << std::endl;
 }
 
-Fixed::Fixed(const float &f_nb) : fp(static_cast<int>(f_nb * (1 << bits))){ 
+Fixed::Fixed(const float &f_nb) : fp(static_cast<int>(roundf(f_nb * (1 << fb)))){ 
 	// std::cout << YELLOW << "Float constructor called" << RESET << std::endl;
 }
 
@@ -81,13 +81,13 @@ Fixed Fixed::operator-(const Fixed &other) const {
 
 Fixed Fixed::operator*(const Fixed &other) const {
 	Fixed result;
-	result.fp = this->fp * other.fp >> bits;
+	result.fp = this->fp * other.fp >> fb;
 	return result;
 };
 
 Fixed Fixed::operator/(const Fixed &other) const {
 	Fixed result;
-	result.fp = (this->fp << bits) / other.fp;
+	result.fp = (this->fp << fb) / other.fp;
 	return result;	
 };
 
@@ -126,11 +126,11 @@ void Fixed::setRawBits(int const &raw) {
 };
 
 float Fixed::toFloat(void) const {
-	return static_cast<float>(fp) / (1 << bits);
+	return static_cast<float>(roundf((fp) / (1 << fb)));
 };
 
 int Fixed::toInt(void) const {
-	return fp >> bits;
+	return fp >> fb;
 };
 
 std::ostream &operator<<(std::ostream &os, const Fixed &fixed) {
@@ -162,5 +162,5 @@ std::istream& operator>>(std::istream& is, Fixed& fixed) {
 }
 
 void Fixed::setFromFloat(float &f_nb) {
-	fp = static_cast<int>(f_nb * (1 << bits));
+	fp = static_cast<int>(roundf((f_nb * (1 << fb))));
 };

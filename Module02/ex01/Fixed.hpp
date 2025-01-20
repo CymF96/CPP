@@ -6,11 +6,12 @@
 /*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:51:02 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/14 09:58:02 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:55:24 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cmath>
 #include "../Colors.hpp"
 
 class Fixed {
@@ -30,7 +31,7 @@ class Fixed {
 		
 	private:
 		int fp;
-		static const int bits = 8;
+		static const int fb = 8;
 		
 };
 

@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/09 12:51:02 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/17 15:42:01 by cofische         ###   ########.fr       */
+/*   Updated: 2025/01/20 11:32:16 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ class Fixed {
 		
 	private:
 		int fp;
-		static const int bits = 8;
+		static const int fb = 8;
 		
 };
