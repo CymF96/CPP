@@ -51,6 +51,13 @@ void Bureaucrat::signForm(AForm &form) {
 		std::cout << BOLD BLUE << this->getName() << RESET << " couldn't sign " << BOLD BLUE << form.getName() << RESET << " because " << BOLD RED << " their grade is too low" << RESET << std::endl;
 };
 
+void Bureaucrat::executeForm(AForm const &form) {
+	if (form.execute(*this))
+		std::cout << BOLD BLUE << this->getName() << RESET << " executed " << BOLD BLUE << form.getName() << RESET << std::endl;
+	else 
+		std::cout << BOLD BLUE << this->getName() << RESET << " couldn't execute " << BOLD BLUE << form.getName() << RESET << " because " << BOLD RED << " their grade is too low" << RESET << std::endl;
+};
+
 void Bureaucrat::incrementGrade(const int &inputGrade) {
 	int tempGrade = getGrade();
 	tempGrade += inputGrade;

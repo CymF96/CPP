@@ -29,8 +29,8 @@ bool ShrubberyCreationForm::beSign(Bureaucrat &bureaucrat) {
 	return (this->getSign());
 };
 
-void drawTree() {
-	std::cout << R"(
+void drawTree(std::ofstream &file) {
+	file << R"(
 		       ,@@@@@@@,
        ,,,.   ,@@@@@@/@@,  .oo8888o.
     ,&%%&%&&%,@@@@@/@@@@@@,8888\88/8o
@@ -46,9 +46,13 @@ void drawTree() {
 
 bool ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 	if (this->getSign() && (executor.getGrade() <= this->getExeGrade())) {
-		
+		std::ofstream newfile((target + "_shrubbery").c_str());
+		if (newfile.is_open()) {
+			drawTree(newfile);
+			newfile.close();
+		} else 
+			std::cout << "Error opening file" << std::endl;
 		return true;
 	} else
 		throw Bureaucrat::GradeTooLowException();
-	
 };
