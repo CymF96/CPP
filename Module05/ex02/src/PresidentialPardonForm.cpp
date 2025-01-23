@@ -23,7 +23,7 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 
 bool PresidentialPardonForm::execute(Bureaucrat const &executor) const {
 	if (this->getSign() && (executor.getGrade() <= this->getExeGrade())) {
-		std::cout << "Dear " << BOLD BLUE << this->target << RESET << ",\nYou have been pardonned by " << BOLD CYAN << "Zaphod Beeblebrox" << std::endl;
+		std::cout << "Dear " << BOLD BLUE << this->target << RESET << ",\nYou have been pardonned by " << BOLD CYAN << "Zaphod Beeblebrox" << RESET << std::endl;
 		return true;
 	} else
 		throw AForm::GradeTooLowException();
