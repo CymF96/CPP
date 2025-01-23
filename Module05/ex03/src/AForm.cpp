@@ -14,7 +14,7 @@
 
 AForm::AForm(const std::string &inputName, const int &inputSignGrade, const int &inputExeGrade) : 
 	name(inputName), signGrade(inputSignGrade), exeGrade(inputExeGrade), sign(false) {
-	std::cout << "AForm constructor called" << std::endl;
+	// std::cout << "AForm constructor called" << std::endl;
 	if (signGrade < 1 || exeGrade < 1)
 		throw GradeTooHighException();
 	else if (signGrade > 150 || exeGrade > 150)

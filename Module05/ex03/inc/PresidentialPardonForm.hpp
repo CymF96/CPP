@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cofische <cofische@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-01-22 15:30:11 by cofische          #+#    #+#             */
-/*   Updated: 2025-01-22 15:30:11 by cofische         ###   ########.fr       */
+/*   Created: 2025-01-22 15:29:56 by cofische          #+#    #+#             */
+/*   Updated: 2025-01-22 15:29:56 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,15 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
-#include <cstdlib>
-#include <ctime>
 #include "AForm.hpp"
 #include "../../Colors.hpp"
 
-class RobotomyRequestForm : public AForm {
+class PresidentialPardonForm : public AForm {
 	public:
-		RobotomyRequestForm(const std::string &inputTarget);
-		~RobotomyRequestForm();
-		RobotomyRequestForm(const RobotomyRequestForm &other);
-		RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
+		PresidentialPardonForm(const std::string &inputTarget);
+		~PresidentialPardonForm();
+		PresidentialPardonForm(const PresidentialPardonForm &other);
+		PresidentialPardonForm &operator=(const PresidentialPardonForm &other);
 
 		bool beSign(Bureaucrat &bureaucrat);
 		bool execute(Bureaucrat const & executor) const;

@@ -13,29 +13,51 @@
 #include "../inc/Bureaucrat.hpp"
 #include "../inc/Form.hpp"
 
-int main(){
+int main() {
 	try {
 		Bureaucrat Bobby("Bobby", 30);
 		Bureaucrat Mandy("Mandy", 122);
-		Form B27("B27", 12, 60);
+		Form B27("B27", 32, 60);
 		Form B28("B28", 100, 80);
-		// Form B29("B28", 0, 180);
-
 		std::cout << std::endl;
-		std::cout << "Bureaucrats: \n";
+		std::cout << UNDERLINE "Bureaucrats:\n" RESET;
 		std::cout << Bobby << std::endl;
 		std::cout << Mandy << std::endl;
-		std::cout << "Forms: \n";
+		std::cout << UNDERLINE "Forms:\n" RESET;
 		std::cout << B27 << std::endl;
 		std::cout << B28 << std::endl;
-		// std::cout << B29 << std::endl;
 		std::cout << std::endl;
 
-		std::cout << "Sign protocol test: " << std::endl;
-		Bobby.signForm(B28);
+		std::cout << UNDERLINE "Sign protocol test: " RESET << std::endl;
+	 	try {
+			Bobby.signForm(B28);
+		} catch (Form::GradeTooLowException &exptL) {
+			std::cout << "Error, Bobby coudn't signed the form " << B28.getName() << "\nReason: " << exptL.what() << std::endl;
+		}
+		if (B28.getSign())
+			std::cout << B28.getName() << " is now " << BOLD GREEN << "signed" << RESET << std::endl;
+		else
+			std::cout << B28.getName() << " is " << BOLD RED << "not signed" << RESET << std::endl;
 		std::cout << std::endl;
-		std::cout << B28 << std::endl;
-		Mandy.signForm(B27);
+		try {
+			Mandy.signForm(B27);
+		} catch (Bureaucrat::GradeTooLowException &exptL) {
+			std::cout << "Error, Mandy coudn't signed the form " << B27.getName() << "\nReason: " << exptL.what() << std::endl;
+		}
+		if (B27.getSign())
+			std::cout << B27.getName() << " is now " << BOLD GREEN << "signed" << RESET << std::endl;
+		else
+			std::cout << B27.getName() << " is " << BOLD RED << "not signed" << RESET << std::endl;
+		std::cout << std::endl;
+		try {
+			Bobby.signForm(B27);
+		} catch (Bureaucrat::GradeTooLowException &exptL) {
+			std::cout << "Error, Bobby coudn't signed the form " << B27.getName() << "\nReason: " << exptL.what() << std::endl;
+		}
+		if (B27.getSign())
+			std::cout << B27.getName() << " is now " << BOLD GREEN << "signed" << RESET << std::endl;
+		else
+			std::cout << B27.getName() << " is " << BOLD RED << "not signed" << RESET << std::endl;
 		std::cout << std::endl;
 
 	} catch (Bureaucrat::GradeTooHighException &exptH) {

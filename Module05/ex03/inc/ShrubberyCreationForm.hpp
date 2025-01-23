@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cofische <cofische@student.42.fr>          #+#  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-01-22 15:30:11 by cofische          #+#    #+#             */
-/*   Updated: 2025-01-22 15:30:11 by cofische         ###   ########.fr       */
+/*   Created: 2025-01-22 15:30:06 by cofische          #+#    #+#             */
+/*   Updated: 2025-01-22 15:30:06 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,16 @@
 #include <iostream>
 #include <string>
 #include <stdexcept>
-#include <cstdlib>
-#include <ctime>
+#include <fstream>
 #include "AForm.hpp"
 #include "../../Colors.hpp"
 
-class RobotomyRequestForm : public AForm {
+class ShrubberyCreationForm : public AForm {
 	public:
-		RobotomyRequestForm(const std::string &inputTarget);
-		~RobotomyRequestForm();
-		RobotomyRequestForm(const RobotomyRequestForm &other);
-		RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
+		ShrubberyCreationForm(const std::string &inputTarget);
+		~ShrubberyCreationForm();
+		ShrubberyCreationForm(const ShrubberyCreationForm &other);
+		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
 
 		bool beSign(Bureaucrat &bureaucrat);
 		bool execute(Bureaucrat const & executor) const;
