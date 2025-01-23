@@ -36,8 +36,6 @@ int main(){
 		std::cout << Bobby;
 		std::cout << Mandy;
 		std::cout << Tonny;
-		// std::cout << Victoria << std::endl;
-		// std::cout << Leon << std::endl;
 		std::cout << std::endl;
 
 		std::cout << UNDERLINE "Decrementing Grade\n" RESET << std::endl;

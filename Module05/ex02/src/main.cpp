@@ -23,7 +23,7 @@ int main() {
 		Bureaucrat Tonny("Tonny", 150);
 		Bureaucrat Boss("Boss", 1);
 		RobotomyRequestForm Repeat("Mandy");
-		ShrubberyCreationForm Tree("Boss");
+		ShrubberyCreationForm Tree("Mandy");
 		RobotomyRequestForm Repeat2("Tonny");
 		PresidentialPardonForm Sorry("Bobby");
 
@@ -43,7 +43,7 @@ int main() {
 		std::cout << BOLD << "A normal day at BORING ADMIN LTD...\n"
 				  << RESET << std::endl;
 
-		std::cout << "Bobby wants to Robotomy Mandy. They're too slow." << std::endl;
+		std::cout << "Bobby wants to Robotomize Mandy. They're too slow." << std::endl;
 		try {
 			Bobby.signForm(Repeat);
 		} catch (const AForm::GradeTooLowException& exptL) {
