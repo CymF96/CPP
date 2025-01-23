@@ -14,7 +14,7 @@
 
 Form::Form(const std::string &inputName, const int &inputSignGrade, const int &inputExeGrade) : 
 	name(inputName), signGrade(inputSignGrade), exeGrade(inputExeGrade), sign(false) {
-	std::cout << "Form constructor called" << std::endl;
+	// std::cout << "Form constructor called" << std::endl;
 	if (signGrade < 1 || exeGrade < 1)
 		throw GradeTooHighException();
 	else if (signGrade > 150 || exeGrade > 150)
@@ -56,7 +56,7 @@ int Form::getExeGrade() const {
 
 bool Form::beSign(Bureaucrat &bureaucrat) {
 	if (bureaucrat.getGrade() >= this->getSignGrade())
-		throw Bureaucrat::GradeTooLowException();
+		throw GradeTooLowException();
 	else
 		this->sign = true;
 	return (this->getSign());
@@ -66,13 +66,17 @@ const char *Form::GradeTooLowException::what() const throw() {
 	return BOLD RED "Form has a grade too low!" RESET " The lowest grade is 150.";
 };
 
+const char *Form::GradeTooLowException::what2() const throw() {
+	return BOLD RED "their grade is too low!" RESET;
+};
+
 const char *Form::GradeTooHighException::what() const throw() {
 	return BOLD RED "Form has a grade too high!" RESET " The highest grade is 1.";
 };
 
 std::ostream &operator<<(std::ostream &os, const Form &form) {
-	os << "The form " << BOLD BLUE << form.getName() << RESET << " needs the following requirement:\nCan be signed by bureaucrat with grade: " << BOLD MAGENTA << form.getSignGrade()
-		<< RESET << " or higher.\nCan be executed by bureaucrat with grade: " << BOLD MAGENTA << form.getExeGrade() << RESET << " or higher.\nStatus of form " << BOLD BLUE << form.getName() << RESET << ": ";
+	os << "The form " << BOLD BLUE << form.getName() << RESET << " has the following requirement:\nCan be signed by bureaucrat with grade " << BOLD MAGENTA << form.getSignGrade()
+		<< RESET << " or higher.\nCan be executed by bureaucrat with grade " << BOLD MAGENTA << form.getExeGrade() << RESET << " or higher.\nStatus of form " << BOLD BLUE << form.getName() << RESET << ": ";
 	if (form.getSign())
 		os << BOLD GREEN << "signed" << RESET << std::endl;
 	else

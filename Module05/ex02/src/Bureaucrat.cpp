@@ -13,7 +13,7 @@
 #include "../inc/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(const std::string &inputName, const int &inputGrade) : name(inputName) {
-	std::cout << "Bureaucrat constructor called" <<std::endl;
+	std::cout << "Bureaucrat has been hired" <<std::endl;
 	if (inputGrade > 150)
 		throw GradeTooLowException();
 	else if (inputGrade < 1 )
@@ -22,7 +22,7 @@ Bureaucrat::Bureaucrat(const std::string &inputName, const int &inputGrade) : na
 		grade = inputGrade;
 }
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat destructor called" <<std::endl;
+	std::cout << "Bureaucrat has been fired" <<std::endl;
 };
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name), grade(other.grade) {
 	std::cout << "Bureaucrat copy constructor called" <<std::endl;
@@ -48,14 +48,14 @@ void Bureaucrat::signForm(AForm &form) {
 	if (form.beSign(*this))
 		std::cout << BOLD BLUE << this->getName() << RESET << " signed " << BOLD BLUE << form.getName() << RESET << std::endl;
 	else 
-		std::cout << BOLD BLUE << this->getName() << RESET << " couldn't sign " << BOLD BLUE << form.getName() << RESET << " because " << BOLD RED << " their grade is too low" << RESET << std::endl;
+		throw AForm::GradeTooLowException();
 };
 
 void Bureaucrat::executeForm(AForm const &form) {
 	if (form.execute(*this))
 		std::cout << BOLD BLUE << this->getName() << RESET << " executed " << BOLD BLUE << form.getName() << RESET << std::endl;
 	else 
-		std::cout << BOLD BLUE << this->getName() << RESET << " couldn't execute " << BOLD BLUE << form.getName() << RESET << " because " << BOLD RED << " their grade is too low" << RESET << std::endl;
+		throw AForm::GradeTooLowException();
 };
 
 void Bureaucrat::incrementGrade(const int &inputGrade) {

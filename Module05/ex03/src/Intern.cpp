@@ -26,12 +26,12 @@ const char* Intern::NoFormFound::what() const throw() {
 };
 
 AForm *Intern::makeForm(const std::string &formName, const std::string &inputTarget) {
-	std::string formNames[3] = {"Shrubbery", "Robotomy", "Presidential"};
-	AForm *(*formCreation[3])(const std::string &) = {createShrubbery, createRobotomy, createPresidential};
+	std::string formNames[3] = {"shrubbery", "robotomy", "presidential"};
+	AForm *(*formCreation[3])(const std::string &) = {&createShrubbery, &createRobotomy, &createPresidential};
 
 	for (int i = 0; i < 3; i++) {
-		if ((formNames[i]).find(formName) != std::string::npos) {
-			std::cout << "Intern creates " << BOLD BLUE << (formNames[i] + "Form") << RESET << std::endl;
+		if ((formName).find(formNames[i]) != std::string::npos) {
+			std::cout << "Intern creates " << BOLD BLUE << (formNames[i] + " form") << RESET << std::endl;
 			return (formCreation[i])(inputTarget);
 		}
 	}

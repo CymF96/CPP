@@ -13,7 +13,6 @@ COLORS = $(COLORS_DIR)/Colors.hpp
 INC = $(INC_DIR)/Bureaucrat.hpp \
 	  $(INC_DIR)/Form.hpp
 
-
 all: $(NAME)
 
 $(NAME): $(OBJ)

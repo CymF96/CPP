@@ -12,21 +12,13 @@
 
 #include "../inc/ShrubberyCreationForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm(const std::string &inputTarget) : AForm("PresidentialPardonForm", 145, 137), target(inputTarget) {};
+ShrubberyCreationForm::ShrubberyCreationForm(const std::string &inputTarget) : AForm("ShrubberyCreationForm", 145, 137), target(inputTarget) {};
 ShrubberyCreationForm::~ShrubberyCreationForm() {};
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &other) : AForm(other) {};
 ShrubberyCreationForm &ShrubberyCreationForm::operator=(const ShrubberyCreationForm &other) {
 	if (this != &other)
 		AForm::operator=(other);
 	return *this;
-};
-
-bool ShrubberyCreationForm::beSign(Bureaucrat &bureaucrat) {
-	if (bureaucrat.getGrade() >= this->getSignGrade())
-		throw Bureaucrat::GradeTooLowException();
-	else
-		this->setSign();
-	return (this->getSign());
 };
 
 void drawTree(std::ofstream &file) {
@@ -39,7 +31,16 @@ void drawTree(std::ofstream &file) {
     file << "   `&%\\ ` /%&'    |.|        \\ '|8'\n";
     file << "       |o|        | |         | |\n";
     file << "       |.|        | |         | |\n";
-    file << "   \\\\|_|\\//_/__|_|,\\_//_\\|_|\n";
+    file << "   \\\\|_|\\//_/__|_|,\\_//_\\|_|\n\n\n";
+	file << "       _-_ \n";
+    file << "    /~~   ~~\\ \n";
+    file << " /~~         ~~\\ \n";
+    file << "{               } \n";
+    file << " \\  _-     -_  / \n";
+    file << "   ~  \\ //  ~ \n";
+    file << "_- -   | | _- _ \n";
+    file << "  _ -  | |   -_ \n";
+    file << "      // \\\\ \n\n";
 }
 
 bool ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
@@ -52,5 +53,5 @@ bool ShrubberyCreationForm::execute(Bureaucrat const &executor) const {
 			std::cout << "Error opening file" << std::endl;
 		return true;
 	} else
-		throw Bureaucrat::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 };

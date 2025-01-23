@@ -25,7 +25,6 @@ class ShrubberyCreationForm : public AForm {
 		ShrubberyCreationForm(const ShrubberyCreationForm &other);
 		ShrubberyCreationForm &operator=(const ShrubberyCreationForm &other);
 
-		bool beSign(Bureaucrat &bureaucrat);
 		bool execute(Bureaucrat const & executor) const;
 	
 	private:
