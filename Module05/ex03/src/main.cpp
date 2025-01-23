@@ -101,6 +101,10 @@ int main() {
 			std::cout << "Error: Boss couldn't execute the form: " << exptL.what() << std::endl;
 		}
 
+		delete Tree;
+		delete Repeat;
+		delete Sorry;
+
 		std::cout 	<< "--4pm--\nEnd of day (except for intern that needs to clean the Boss' office)\n"
 					<< BOLD << "\n--------- Goodbye ----------\n\n" << RESET;
 
@@ -113,7 +117,5 @@ int main() {
 	} catch (const AForm::GradeTooLowException &exptL) {
 		std::cout << "Error: " << exptL.what() << std::endl;
 	}
-
-
 	return 0;
 }
