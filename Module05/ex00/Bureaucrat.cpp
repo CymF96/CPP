@@ -13,16 +13,16 @@
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(const std::string &inputName, const int &inputGrade) : name(inputName) {
-	std::cout << "Bureaucrat constructor called" <<std::endl;
+	std::cout << "Bureaucrat has been hired" <<std::endl;
 	if (inputGrade > 150)
 		throw GradeTooLowException();
-	else if (inputGrade < 1 )
+	else if (inputGrade < 1)
 		throw GradeTooHighException();
 	else
 		grade = inputGrade;
 }
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat destructor called" <<std::endl;
+	std::cout << "Bureaucrat has been fired" <<std::endl;
 };
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name), grade(other.grade) {
 	std::cout << "Bureaucrat copy constructor called" <<std::endl;

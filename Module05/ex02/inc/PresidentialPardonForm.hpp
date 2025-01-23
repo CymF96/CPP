@@ -24,7 +24,6 @@ class PresidentialPardonForm : public AForm {
 		PresidentialPardonForm(const PresidentialPardonForm &other);
 		PresidentialPardonForm &operator=(const PresidentialPardonForm &other);
 
-		bool beSign(Bureaucrat &bureaucrat);
 		bool execute(Bureaucrat const & executor) const;
 	
 	private:

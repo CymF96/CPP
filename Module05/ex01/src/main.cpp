@@ -21,18 +21,17 @@ int main() {
 		Form B28("B28", 100, 80);
 		std::cout << std::endl;
 		std::cout << UNDERLINE "Bureaucrats:\n" RESET;
-		std::cout << Bobby << std::endl;
-		std::cout << Mandy << std::endl;
-		std::cout << UNDERLINE "Forms:\n" RESET;
+		std::cout << Bobby;
+		std::cout << Mandy;
+		std::cout << UNDERLINE "\nForms:\n" RESET;
 		std::cout << B27 << std::endl;
 		std::cout << B28 << std::endl;
-		std::cout << std::endl;
 
-		std::cout << UNDERLINE "Sign protocol test: " RESET << std::endl;
+		std::cout << UNDERLINE "Sign protocol test:" RESET << std::endl;
 	 	try {
 			Bobby.signForm(B28);
 		} catch (Form::GradeTooLowException &exptL) {
-			std::cout << "Error, Bobby coudn't signed the form " << B28.getName() << "\nReason: " << exptL.what() << std::endl;
+			std::cout << BOLD BLUE << Bobby.getName() << RESET << " coudn't signed the form " << BOLD BLUE << B28.getName() << RESET " because " << exptL.what2() << std::endl;
 		}
 		if (B28.getSign())
 			std::cout << B28.getName() << " is now " << BOLD GREEN << "signed" << RESET << std::endl;
@@ -41,8 +40,8 @@ int main() {
 		std::cout << std::endl;
 		try {
 			Mandy.signForm(B27);
-		} catch (Bureaucrat::GradeTooLowException &exptL) {
-			std::cout << "Error, Mandy coudn't signed the form " << B27.getName() << "\nReason: " << exptL.what() << std::endl;
+		} catch (Form::GradeTooLowException &exptL) {
+			std::cout << BOLD BLUE << Mandy.getName() << RESET << " coudn't signed the form " << BOLD BLUE << B27.getName() << RESET " because " << exptL.what2() << std::endl;
 		}
 		if (B27.getSign())
 			std::cout << B27.getName() << " is now " << BOLD GREEN << "signed" << RESET << std::endl;
@@ -51,8 +50,8 @@ int main() {
 		std::cout << std::endl;
 		try {
 			Bobby.signForm(B27);
-		} catch (Bureaucrat::GradeTooLowException &exptL) {
-			std::cout << "Error, Bobby coudn't signed the form " << B27.getName() << "\nReason: " << exptL.what() << std::endl;
+		} catch (Form::GradeTooLowException &exptL) {
+			std::cout << BOLD BLUE << Bobby.getName() << RESET << " coudn't signed the form " << BOLD BLUE << B27.getName() << RESET " because " << exptL.what2() << std::endl;
 		}
 		if (B27.getSign())
 			std::cout << B27.getName() << " is now " << BOLD GREEN << "signed" << RESET << std::endl;

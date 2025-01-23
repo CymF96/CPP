@@ -60,7 +60,7 @@ void AForm::setSign() {
 
 bool AForm::beSign(Bureaucrat &bureaucrat) {
 	if (bureaucrat.getGrade() >= this->getSignGrade())
-		throw Bureaucrat::GradeTooLowException();
+		throw GradeTooLowException();
 	else
 		this->sign = true;
 	return (this->getSign());
@@ -70,13 +70,21 @@ const char *AForm::GradeTooLowException::what() const throw() {
 	return BOLD RED "AForm has a grade too low!" RESET " The lowest grade is 150.\n";
 };
 
+const char *AForm::GradeTooLowException::what2() const throw() {
+	return BOLD RED "their grade is too low for signature!" RESET;
+};
+
+const char *AForm::GradeTooLowException::what3() const throw() {
+	return BOLD RED "their grade is too low for execution!" RESET;
+};
+
 const char *AForm::GradeTooHighException::what() const throw() {
 	return BOLD RED "AForm has a grade too high!" RESET " The highest grade is 1.\n";
 };
 
 std::ostream &operator<<(std::ostream &os, const AForm &AForm) {
 	os << "The AForm " << BOLD BLUE << AForm.getName() << RESET << " needs the following requirement:\nCan be signed by bureaucrat with grade: " << BOLD MAGENTA << AForm.getSignGrade()
-		<< RESET << " or higher.\nCan be executed by bureaucrat with grade: " << BOLD MAGENTA << AForm.getExeGrade() << RESET << " or higher.\nStatus of AForm " << BOLD BLUE << AForm.getName() << RESET << ": ";
+		<< RESET << " or higher.\nCan be executed by bureaucrat with grade: " << BOLD MAGENTA << AForm.getExeGrade() << RESET << " or higher.\nStatus of " << BOLD BLUE << AForm.getName() << RESET << ": ";
 	if (AForm.getSign())
 		os << BOLD GREEN << "signed" << RESET << std::endl;
 	else

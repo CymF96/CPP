@@ -12,8 +12,7 @@
 
 #include "../inc/RobotomyRequestForm.hpp"
 
-
-RobotomyRequestForm::RobotomyRequestForm(const std::string &inputTarget) : AForm("PresidentialPardonForm", 72, 45), target(inputTarget) {};
+RobotomyRequestForm::RobotomyRequestForm(const std::string &inputTarget) : AForm("RobotomyRequestForm", 72, 45), target(inputTarget) {};
 RobotomyRequestForm::~RobotomyRequestForm() {};
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &other) : AForm(other) {};
 RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &other) {
@@ -22,16 +21,9 @@ RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &o
 	return *this;
 };
 
-bool RobotomyRequestForm::beSign(Bureaucrat &bureaucrat) {
-	if (bureaucrat.getGrade() >= this->getSignGrade())
-		throw Bureaucrat::GradeTooLowException();
-	else
-		this->setSign();
-	return (this->getSign());
-};
-
 bool RobotomyRequestForm::execute(Bureaucrat const &executor) const {
 	if (this->getSign() && (executor.getGrade() <= this->getExeGrade())) {
+		std::cout << "🛠️ Brrrrrrrrrrrrrr 🛠️\n";
 		std::srand(std::time(0));
 		int	success = (std::rand() % 100) + 1;
 		(void)executor;
@@ -41,5 +33,5 @@ bool RobotomyRequestForm::execute(Bureaucrat const &executor) const {
 			std::cout << this->target << "'s robotomization failed" << std::endl;
 		return true;
 	} else
-		throw Bureaucrat::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 };

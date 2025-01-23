@@ -21,18 +21,10 @@ PresidentialPardonForm &PresidentialPardonForm::operator=(const PresidentialPard
 	return *this;
 };
 
-bool PresidentialPardonForm::beSign(Bureaucrat &bureaucrat) {
-	if (bureaucrat.getGrade() >= this->getSignGrade())
-		throw Bureaucrat::GradeTooLowException();
-	else
-		this->setSign();
-	return (this->getSign());
-};
-
 bool PresidentialPardonForm::execute(Bureaucrat const &executor) const {
 	if (this->getSign() && (executor.getGrade() <= this->getExeGrade())) {
 		std::cout << "Dear " << BOLD BLUE << this->target << RESET << ",\nYou have been pardonned by " << BOLD CYAN << "Zaphod Beeblebrox" << std::endl;
 		return true;
 	} else
-		throw Bureaucrat::GradeTooLowException();
+		throw AForm::GradeTooLowException();
 };

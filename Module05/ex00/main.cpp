@@ -17,17 +17,30 @@ int main(){
 		Bureaucrat Bobby("Bobby", 30);
 		Bureaucrat Mandy("Mandy", 1);
 		Bureaucrat Tonny("Tonny", 150);
-		// Bureaucrat Victoria("Victoria", 0);
-		// Bureaucrat Leon("Leon", 151);
+		try {
+			Bureaucrat Victoria("Victoria", 0);
+		} catch (Bureaucrat::GradeTooHighException &exptH) {
+			std::cout << "Error: " << exptH.what() << std::endl;
+		} catch (Bureaucrat::GradeTooLowException &exptL) {
+			std::cout << "Error: " << exptL.what() << std::endl;
+		} try {
+			Bureaucrat Leon("Leon", 151);
+		} catch (Bureaucrat::GradeTooHighException &exptH) {
+			std::cout << "Error: " << exptH.what() << std::endl;
+		} catch (Bureaucrat::GradeTooLowException &exptL) {
+			std::cout << "Error: " << exptL.what() << std::endl;
+		}
+
 		std::cout << std::endl;
 		std::cout << UNDERLINE "Bureaucrats:" RESET << std::endl;
-		std::cout << Bobby << std::endl;
-		std::cout << Mandy << std::endl;
-		std::cout << Tonny << std::endl;
+		std::cout << Bobby;
+		std::cout << Mandy;
+		std::cout << Tonny;
 		// std::cout << Victoria << std::endl;
 		// std::cout << Leon << std::endl;
-		
-		std::cout << UNDERLINE "Decrementting Grade\n" RESET << std::endl;
+		std::cout << std::endl;
+
+		std::cout << UNDERLINE "Decrementing Grade\n" RESET << std::endl;
 		std::cout << "Decrementing Bobby's grade by 4:" << std::endl;
 		try {
 			Bobby.decrementGrade(4);

@@ -13,7 +13,7 @@
 #include "../inc/Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(const std::string &inputName, const int &inputGrade) : name(inputName) {
-	std::cout << "Bureaucrat constructor called" <<std::endl;
+	std::cout << "Bureaucrat has been hired" <<std::endl;
 	if (inputGrade > 150)
 		throw GradeTooLowException();
 	else if (inputGrade < 1 )
@@ -22,7 +22,7 @@ Bureaucrat::Bureaucrat(const std::string &inputName, const int &inputGrade) : na
 		grade = inputGrade;
 }
 Bureaucrat::~Bureaucrat() {
-	std::cout << "Bureaucrat destructor called" <<std::endl;
+	std::cout << "Bureaucrat has been fired" <<std::endl;
 };
 Bureaucrat::Bureaucrat(const Bureaucrat &other) : name(other.name), grade(other.grade) {
 	std::cout << "Bureaucrat copy constructor called" <<std::endl;
@@ -47,8 +47,8 @@ int Bureaucrat::getGrade() const {
 void Bureaucrat::signForm(Form &form) {
 	if (form.beSign(*this))
 		std::cout << BOLD BLUE << this->getName() << RESET << " signed " << BOLD BLUE << form.getName() << RESET << std::endl;
-	else 
-		std::cout << BOLD BLUE << this->getName() << RESET << " couldn't sign " << BOLD BLUE << form.getName() << RESET << " because " << BOLD RED << " their grade is too low" << RESET << std::endl;
+	else
+		throw Form::GradeTooLowException();
 };
 
 void Bureaucrat::incrementGrade(const int &inputGrade) {
@@ -70,11 +70,11 @@ void Bureaucrat::decrementGrade(const int &inputGrade) {
 }; 
 
 const char* Bureaucrat::GradeTooLowException::what() const throw() {
-	return BOLD RED "Bureaucrat has a grade too low!" RESET;
+	return BOLD RED "Bureaucrat grade is too low!" RESET;
 };
 
 const char* Bureaucrat::GradeTooHighException::what() const throw() {
-	return BOLD RED "Bureaucrat has a grade too high!" RESET;
+	return BOLD RED "Bureaucrat grade is too high!" RESET;
 };
 
 std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat) {

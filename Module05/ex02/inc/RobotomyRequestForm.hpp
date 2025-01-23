@@ -26,7 +26,6 @@ class RobotomyRequestForm : public AForm {
 		RobotomyRequestForm(const RobotomyRequestForm &other);
 		RobotomyRequestForm &operator=(const RobotomyRequestForm &other);
 
-		bool beSign(Bureaucrat &bureaucrat);
 		bool execute(Bureaucrat const & executor) const;
 	
 	private:
