@@ -17,7 +17,7 @@
 #include "AForm.hpp"
 #include "../../Colors.hpp"
 
-class Form;
+class AForm;
 
 class Bureaucrat {
 	public:
