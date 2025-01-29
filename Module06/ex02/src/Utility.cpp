@@ -50,14 +50,14 @@ void identify(Base& p) {
 	try {
 		B& b = dynamic_cast<B&>(p);
 		(void)b;
-		std::cout << "type of p is: " BOLD RED "B" RESET << std::endl;
+		std::cout << "type of p is: " BOLD GREEN "B" RESET << std::endl;
 	} catch (std::exception& e) {
 		;
 	}
 	try {
 		C& c = dynamic_cast<C&>(p);
 		(void)c;
-		std::cout << "type of p is: " BOLD RED "C" RESET << std::endl;
+		std::cout << "type of p is: " BOLD BLUE "C" RESET << std::endl;
 	} catch (std::exception& e) {
 		;
 	}
