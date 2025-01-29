@@ -70,6 +70,9 @@ int main() {
 	std::cout << "Value of ptrValue after reassignment: " << CYAN << *ptrValue << RESET << std::endl;
 	std::cout << "Value of numValue after reassignment: " << CYAN << *numValue << RESET << std::endl;
 
+	delete dataPtr;
+	delete dataPtrTest;
+
 	return 0;
 
 }

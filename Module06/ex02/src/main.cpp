@@ -23,14 +23,17 @@ int main() {
 	Base &refPtr2 = *ptr2;
 	Base &refPtr3 = *ptr3;
 	
+	std::cout << BOLD "IDENTIFY VIA POINTER" RESET << std::endl;
 	identify(ptr1);
 	identify(ptr2);
 	identify(ptr3);
-	
+
+	std::cout << BOLD "\nIDENTIFY VIA REFERENCE" RESET << std::endl;
 	identify(refPtr1);
 	identify(refPtr2);
 	identify(refPtr3);
-	
+
+	std::cout << std::endl;
 	delete ptr1;
 	delete ptr2;
 	delete ptr3;

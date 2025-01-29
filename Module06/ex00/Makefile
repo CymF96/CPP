@@ -1,28 +1,37 @@
 NAME = Convert
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
-CFILES = main.cpp Scalar.cpp
-OFILES = $(CFILES:%.cpp=%.o)
-HFILE = Scalar.hpp
-COLOR_DIR = ..
-COLORS = $(COLOR_DIR)/Colors.hpp
+INC_DIR = inc
+SRC_DIR = src
+OBJ_DIR = obj
+SRC = $(SRC_DIR)/Scalar.cpp \
+      $(SRC_DIR)/Utility.cpp \
+      $(SRC_DIR)/main.cpp
+OBJ = $(SRC:$(SRC_DIR)/%.cpp=$(OBJ_DIR)/%.o)
+COLORS_DIR = ..
+COLORS = $(COLORS_DIR)/Colors.hpp
+INC = $(INC_DIR)/Scalar.hpp \
+	  $(INC_DIR)/Utility.hpp 
 
 all: $(NAME)
 
-$(NAME): $(OFILES)
-	@$(CXX) $(CXXFLAGS) $(OFILES) -o $(NAME)
-	@echo "making $@ program"
+$(NAME): $(OBJ)
+	@$(CXX) $(CXXFLAGS) -o $(NAME) $(OBJ)
+	@echo "Executable $(NAME) created!"
 
-$(OFILE): $(CFILE) $(HFILE) $(COLORS)
-	@$(CXX) $(CXXFLAGS) -c $^ -o $@
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+	@mkdir -p $(OBJ_DIR)
+	@$(CXX) $(CXXFLAGS) -I $(INC_DIR) -c $< -o $@
+	@echo "Compiled $< into $@"
 
 clean:
-	@rm -f $(OFILES)
+	@rm -rf $(OBJ_DIR)
+	@echo "Object files and directories removed."
 
 fclean: clean
 	@rm -f $(NAME)
-	@echo "cleaning object file and program file"
+	@echo "Executable $(NAME) removed."
 
 re: fclean all
 
-.PHONY: clean fclean re all
+.PHONY: all clean fclean re

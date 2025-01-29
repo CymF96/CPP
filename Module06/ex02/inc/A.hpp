@@ -15,8 +15,4 @@
 #include "Base.hpp"
 #include "../../Colors.hpp"
 
-class A: public Base {
-	public:
-	
-	private:
-};
+class A: public Base {};

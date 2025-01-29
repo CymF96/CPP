@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #ifndef DATA_HPP
-# define DATA_HPP
+#define DATA_HPP
 
-# include <string>
+#include <string>
 
 struct Data {
 	std::string		type;

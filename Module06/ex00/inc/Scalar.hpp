@@ -10,14 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include <iostream>
 #include <string>
-#include <sstream>
-#include <cfloat>
-#include <cmath>
-#include <iomanip> 
+#include "Utility.hpp"
 #include <limits>
-#include "../Colors.hpp"
+#include "../../Colors.hpp"
 
 class ScalarConverter {
 	public:
@@ -30,12 +28,3 @@ class ScalarConverter {
 		ScalarConverter &operator=(const ScalarConverter &other);
 };
 
-int stringToInt(const std::string &str);
-float stringToFloat(const std::string &str);
-std::string removeChar(const std::string &str);
-double stringToDouble(const std::string &str);
-void convertToChar(const std::string &str);
-void convertToInt(const std::string &str);
-void convertToFloat(const std::string &str);
-void convertToDouble(const std::string &str);
-bool specialCase(const std::string &str);
