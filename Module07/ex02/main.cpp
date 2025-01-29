@@ -43,12 +43,6 @@ int main(int, char**)
     for (int i = 0; i < 5; i++)
         std::cout << "Array[" << i << "] = " << mirror[i] << std::endl;
 
-    {
-        std::cout << BOLD "\n***TESTING CONSTRUCTORS***" RESET << std::endl;
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
-    }
-
     std::cout << BOLD "\n***TESTING COPY VALUE IN ARRAY***" RESET << std::endl;
     for (int i = 0; i < MAX_VAL; i++)
     {
@@ -60,13 +54,20 @@ int main(int, char**)
         else if (i < 5)
             std::cout << "mirror[" << i << "] = " << mirror[i] << " // numbers[" << i << "] = " << numbers[i] << std::endl;
     }
-
-    std::cout << BOLD "\n***TESTING DEEP COPY VALUE IN ANOTHER SCOPE***" RESET << std::endl;
+    
     {
-        for (int i = 0; i < MAX_VAL; i++)
-            numbers[i] = rand() % 1000;
-        for (int i = 0; i < 5; i++)
-            std::cout << "mirror[" << i << "] = " << mirror[i] << " // numbers[" << i << "] = " << numbers[i] << std::endl;
+        std::cout << BOLD "\n***TESTING CONSTRUCTORS***" RESET << std::endl;
+        Array<int> assignNumbers = numbers;
+        Array<int> copyNumbers(numbers);
+        std::cout << BOLD "\n***TESTING DEEP COPY VALUE IN ANOTHER SCOPE***" RESET << std::endl;
+        {
+            for (int i = 0; i < MAX_VAL; i++)
+                numbers[i] = rand() % 1000;
+            for (int i = 0; i < 5; i++) {
+                std::cout << "assignNumbers[" << i << "] = " << assignNumbers[i] << " // numbers[" << i << "] = " << numbers[i] << std::endl;
+                std::cout << "copyNumbers[" << i << "] = " << copyNumbers[i] << " // numbers[" << i << "] = " << numbers[i] << std::endl;
+            }
+        }
     }
 
     std::cout << BOLD "\n***TESTING OUT OF RANGE OPERATOR***" RESET << std::endl;
