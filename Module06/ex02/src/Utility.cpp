@@ -12,16 +12,16 @@
 
 #include "../inc/Utility.hpp"
 
-Base* createA() { return new A;};
-Base* createB() { return new B;};
-Base* createC() { return new C;};
+Base *createA() { return new A;};
+Base *createB() { return new B;};
+Base *createC() { return new C;};
 
 Base *generate(void) {
 	Base *(*consArray[3])() = {&createA, &createB, &createC};
-	
 	int random = std::rand() % 3;
-	
+
 	return consArray[random]();
+	
 	throw std::runtime_error("Randomization failed to call a derived class constructor");
 };
 
