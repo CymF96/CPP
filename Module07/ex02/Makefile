@@ -1,7 +1,7 @@
 NAME = Array
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
-CFILES = main.cpp Array.tpp
+CFILES = main.cpp
 OFILES = $(CFILES:%.cpp=%.o)
 HFILE = Array.hpp
 COLOR_DIR = ..
