@@ -24,23 +24,24 @@ class Array {
 
 		Array() : arrSize(0) {
 			std::cout << BLUE "Default constructor" RESET << std::endl;
-			array = new T[arrSize];
+			array = static_cast<T*>(operator new[](arrSize * sizeof(T)));
 			for (unsigned int i = 0; i < arrSize; i++)
 				array[i] = 0;
 		}
 		Array(const unsigned int n) : arrSize(n) {
 			std::cout << CYAN "Default constructor with parameter" RESET << std::endl;
-			array = new T[arrSize]; 
+			array = static_cast<T*>(operator new[](arrSize * sizeof(T)));
 			for (unsigned int i = 0; i < arrSize; i++)
 				array[i] = 0;
 		}
 		~Array()  {
 			std::cout << RED "Default destructor" RESET << std::endl;
 			if (array)
-				delete [] array;
+				operator delete[](array); 
 		}
-		Array(const Array &other) : array(new T[other.arrSize]), arrSize(other.arrSize) {
+		Array(const Array &other) : arrSize(other.arrSize) {
 			std::cout << GREEN "Copy constructor" RESET << std::endl;
+			array = static_cast<T*>(operator new[](arrSize * sizeof(T)));
 			for (unsigned int i = 0; i < arrSize ; i++)
 				array[i] = other.array[i];
 		}
@@ -51,9 +52,9 @@ class Array {
 
 		Array &operator=(const Array &other)  {
 			if (this != *other) {
-				delete [] this->array;
+				operator delete[](this->array);
 				arrSize = other.arrSize;
-            	array = new T[arrSize];
+            	array = static_cast<T*>(operator new[](arrSize * sizeof(T)));
             	for (unsigned int i = 0; i < arrSize; ++i) {
                		array[i] = other.array[i];
 				}
