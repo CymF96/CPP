@@ -77,10 +77,13 @@ void convertToChar(const std::string &str) {
 
 void convertToInt(const std::string &str) {
 	int int_nbr = stringToInt(str);
-	if (str[0] == '0' && int_nbr == 0)
+	if (int_nbr == 0) {
+		if (str[0] == '0')
+			printConversion(INT, int_nbr);
+		else
+			printConversion(INT, stringToDouble(str));
+	} else
 		printConversion(INT, int_nbr);
-	else
-		printConversion(INT, stringToDouble(str));
 }
 
 void convertToFloat(const std::string &str) {
