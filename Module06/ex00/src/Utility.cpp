@@ -38,12 +38,10 @@ template <typename T>
 static void printConversion(typeData type, T num) {
 	if (num < 32 || num > 126)
 		std::cout << "char: " RED << "non displayable" << RESET << std::endl;
-	else if (isprint(static_cast<char>(num))) {
-		if (type == CHAR)
-			std::cout << "char: " MAGENTA "'" << num << RESET "'" << std::endl;
-		else
-			std::cout << "char: " MAGENTA "'" << static_cast<char>(num) << RESET "'" << std::endl;
-	}
+	else if (type == CHAR)
+		std::cout << "char: " MAGENTA "'" << num << RESET "'" << std::endl;
+	else if (isprint(static_cast<char>(num)))
+		std::cout << "char: " MAGENTA "'" << static_cast<char>(num) << RESET "'" << std::endl;
 	else
 		std::cout << "char: " RED "impossible" RESET << std::endl;
 	if (std::isnan(num) || (num < std::numeric_limits<int>::min() || num > std::numeric_limits<int>::max()))
@@ -116,7 +114,7 @@ void specialCase(const std::string &str) {
 /******************************************************************************************/
 
 int stringToInt(const std::string &str) {
-	long int_nbr;
+	int int_nbr;
 	std::istringstream iss(str);
 	iss >> int_nbr;
 	if (iss.fail() || !iss.eof())
