@@ -16,9 +16,15 @@
 #include "../Colors.hpp"
 
 template <typename Titer>
-void iter(Titer *add, size_t len, void (*f)(Titer &)) {
+void iter(Titer *arr, size_t len, void (*f)(Titer &)) {
 	for (size_t i = 0; i < len; i++)
-		f(add[i]);
+		f(arr[i]);
+};
+
+template <typename Titer>
+void iter(Titer *arr, size_t len, void (*f)) {
+	for (size_t i = 0; i < len; i++)
+		f(arr[i]);
 };
 
 template <typename T>
