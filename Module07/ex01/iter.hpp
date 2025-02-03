@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 16:48:32 by cofische          #+#    #+#             */
-/*   Updated: 2025/01/28 17:54:10 by cofische         ###   ########.fr       */
+/*   Updated: 2025/02/03 11:06:10 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void iter(Titer *arr, size_t len, void (*f)(Titer &)) {
 };
 
 template <typename Titer>
-void iter(Titer *arr, size_t len, void (*f)) {
+void iter(Titer *arr, size_t len, void (*f)(Titer const &)) {
 	for (size_t i = 0; i < len; i++)
 		f(arr[i]);
 };
