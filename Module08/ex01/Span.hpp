@@ -14,6 +14,7 @@
 #include <vector>
 #include <exception>
 #include <algorithm>
+#include <climits> 
 #include <cstdlib>
 #include <ctime>
 #include "../Colors.hpp"
@@ -28,7 +29,8 @@ class Span {
 		std::vector<int> intVector;
 		
 		void addNumber(unsigned int inputNum);
-		void addManyNumber(Span &v);
+		void addManyNumber(int begin, int end);
+		void appendArray(Span &v);
 		unsigned int shortestSpan();
 		unsigned int longestSpan();
 		unsigned int getN();
