@@ -57,9 +57,10 @@ int main(int, char**)
     
     {
         std::cout << BOLD "\n***TESTING CONSTRUCTORS***" RESET << std::endl;
-        Array<int> assignNumbers = numbers;
+        Array<int> assignNumbers(10);
+        assignNumbers = numbers;
         Array<int> copyNumbers(numbers);
-        std::cout << BOLD "\n***TESTING DEEP COPY VALUE IN ANOTHER SCOPE***" RESET << std::endl;
+        std::cout << BOLD "\n***TESTING DEEP COPY VALUE BY CHANGING NUMBERS ELEMENTS***" RESET << std::endl;
         {
             for (int i = 0; i < MAX_VAL; i++)
                 numbers[i] = rand() % 1000;

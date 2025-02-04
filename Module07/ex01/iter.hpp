@@ -22,13 +22,13 @@ void iter(Titer *arr, size_t len, void (*f)(Titer &)) {
 };
 
 template <typename Titer>
-void iter(Titer *arr, size_t len, void (*f)(Titer const &)) {
+void iter(Titer *arr, size_t len, void (*f)(const Titer &)) {
 	for (size_t i = 0; i < len; i++)
 		f(arr[i]);
 };
 
 template <typename T>
-void printIter(T var) {
+void printIter(T &var) {
 	std::cout << var << std::endl;
 }
 

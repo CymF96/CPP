@@ -51,7 +51,8 @@ class Array {
 	/***************************************************************/
 
 		Array &operator=(const Array &other)  {
-			if (this != *other) {
+			std::cout << YELLOW "Copy Assignment constructor" RESET << std::endl;
+			if (this != &other) {
 				operator delete[](this->array);
 				arrSize = other.arrSize;
             	array = static_cast<T*>(operator new[](arrSize * sizeof(T)));
