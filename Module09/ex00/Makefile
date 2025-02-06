@@ -1,11 +1,12 @@
 NAME = btc
 CXX = c++
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98
+OBJ = OBJ
 CFILES = main.cpp BitcoinExchange.cpp
-OFILES = $(CFILES:%.cpp=%.o)
-HFILE = BitcoinExchange.hpp
+OFILES = $(patsubst %.cpp, $(OBJ)/%.o, $(CFILES))
 COLOR_DIR = ..
-COLORS = $(COLOR_DIR)/Colors.hpp
+HFILES = BitcoinExchange.hpp $(COLOR_DIR)/Colors.hpp
+
 
 all: $(NAME)
 
@@ -13,11 +14,12 @@ $(NAME): $(OFILES)
 	@$(CXX) $(CXXFLAGS) $(OFILES) -o $(NAME)
 	@echo "making $@ program"
 
-$(OFILE): $(CFILE) $(HFILE) $(COLORS)
-	@$(CXX) $(CXXFLAGS) -c $^ -o $@
+$(OBJ)/%.o: %.cpp $(HFILES)
+	@mkdir -p $(OBJ)
+	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 clean:
-	@rm -f $(OFILES)
+	@rm -rf $(OBJ)
 
 fclean: clean
 	@rm -f $(NAME)

@@ -19,6 +19,9 @@
 #include <map>
 #include "../Colors.hpp"
 
+typedef std::map<std::string, float>::iterator keyType;
+typedef std::map<std::string, float> map;
+
 class BTC {
 	public:
 		BTC(const std::string &filename);
@@ -26,15 +29,24 @@ class BTC {
 		BTC(const BTC &other);
 		BTC &operator=(const BTC &other);
 		
-		std::string key;
-		float conversion;
+		map tempBTC;
+		keyType tempMapKey;
+		float tempMapValue;
+
+		keyType mapKey;
+		float mapValue;
 
 		float getConversion() const;
-		std::string getKey() const;
-		std::string findKey(const std::string &key);
-		void dataMapping();
-		void Mapping(std::string line);
+		keyType getKey() const;
+		const map &getMap();
+		void findValue(const std::string &key);
+		void dataMapping(std::ifstream &base, int flag);
+		void Mapping(std::string &line);
 		bool checkFormat(std::string &line);
+		void checkFormatFile(std::string &line);
+		keyType findClosest(const std::string &key);
+		void printConversion(std::string &temp);
+		float convert();
 		
 		class BTCERROR: public std::exception {
 			private:
@@ -45,8 +57,9 @@ class BTC {
 		};
 	
 	private:
-		std::map<const std::string, const float> btc;
+		map btc;
 		std::ifstream database;
+		std::ifstream conversionFile;
 };
 
-std::ostream &operator<<(std::ostream &os, const BTC &btc);
+std::ostream &operator<<(std::ostream &os, BTC &btc);

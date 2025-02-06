@@ -13,15 +13,16 @@
 #include "BitcoinExchange.hpp"
 
 int main(int ac, char **av) {
-	if (ac != 1 ) {
+	if (ac != 2 ) {
 		std::cout <<  BOLD RED "Format Error " RESET "./btc nameFile" << std::endl;
 		return (1);
 	}
-	std::string filename = av[1],c_str();
-	std::ifstream btcData((filename).c_str());
-	if (btcData.is_open())
-	{
-		
+
+	std::string filename = av[1];
+	try {
+		BTC btc(filename);
+	} catch (std::exception &e) {
+		std::cout << BOLD RED "Error: " RESET << e.what();
 	}
 	return 0;
 }
