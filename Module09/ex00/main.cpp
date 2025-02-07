@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 11:29:02 by cofische          #+#    #+#             */
-/*   Updated: 2025/02/05 14:30:44 by cofische         ###   ########.fr       */
+/*   Updated: 2025/02/07 09:38:55 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@ int main(int ac, char **av) {
 	}
 
 	std::string filename = av[1];
-	try {
-		BTC btc(filename);
-	} catch (std::exception &e) {
-		std::cout << BOLD RED "Error: " RESET << e.what();
-	}
+	BTC btc(filename);
 	return 0;
 }
