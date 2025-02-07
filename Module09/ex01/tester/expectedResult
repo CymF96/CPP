@@ -1,0 +1,73 @@
+Testing: "8 9 * 9 - 9 - 9 - 4 - 1 +" 
+42
+------------------------
+Testing: "7 7 * 7 -" 
+42
+------------------------
+Testing: "1 2 * 2 / 2 * 2 4 - +" 
+0
+------------------------
+Testing: "(1 + 1)" 
+Error: invalid RPN format. Input not recognize --> (1 + 1)
+------------------------
+Testing: "3 4 5 * + 6 -" 
+17
+------------------------
+Testing: "2 3 4 * + 5 6 * + 7 -" 
+37
+------------------------
+Testing: "1 2 + 3 4 + * 5 +" 
+26
+------------------------
+Testing: "9 5 / 2 + 3 4 * +" 
+15
+------------------------
+Testing: "6 2 3 + 4 * + 5 -" 
+21
+------------------------
+Testing: "7 8 + 3 4 + * 5 +" 
+110
+------------------------
+Testing: "12+34*56-*/" 
+0
+------------------------
+Testing: "8 4 - 2 / 0 /" 
+Error: Division by zero
+0
+------------------------
+Testing: "5 8 - 2 *" 
+-6
+------------------------
+Testing: "9 5 3 + *" 
+72
+------------------------
+Testing: "3 2 + 5 * 4 6 + 7 * 2 - 1 * + 8 2 + 5 3 * - 4 6 + * 2 + 9 - * 3 8 * 2 + 6 * 5 + - 2 3 * 6 + * 1 9 * + 7 4 - 8 + 2 - *" 
+-589815
+------------------------
+Testing: " " 
+Error: invalid RPN format. Calcul impossible -->  
+------------------------
+Testing: "1" 
+Error: invalid RPN format. Calcul impossible --> 1
+------------------------
+Testing: "1 2" 
+Error: invalid RPN format. Calcul impossible --> 1 2
+------------------------
+Testing: "1 +" 
+Error: invalid RPN format. Calcul impossible --> 1 +
+------------------------
+Testing: "+ -" 
+Error: invalid RPN format. Calcul impossible --> + -
+------------------------
+Testing: "a b +" 
+Error: invalid RPN format for 1st elements --> a b +
+------------------------
+Testing: "+ " 
+Error: invalid RPN format. Calcul impossible --> + 
+------------------------
+Testing: "1 2 3 4 5 6" 
+Error: invalid RPN format. Calcul is impossible --> 1 2 3 4 5 6
+------------------------
+Testing: "6 -2 /" 
+Error: invalid RPN format. Calcul is impossible --> 6 -2 /
+------------------------
