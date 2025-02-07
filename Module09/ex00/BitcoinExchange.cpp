@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:53:57 by cofische          #+#    #+#             */
-/*   Updated: 2025/02/05 16:38:36 by cofische         ###   ########.fr       */
+/*   Updated: 2025/02/07 10:06:35 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,16 @@ float value;
 /*******************************/
 
 BTC::BTC(const std::string &filename) : mapKey(0), mapValue(0), database("CSV/data.csv"), conversionFile(filename.c_str()) {
-	if (database.is_open()) {
-		dataMapping(database, 1);
-		database.close();
-	} else
-		throw BTC::BTCERROR("Failed generating database\n");
-	if (conversionFile.is_open()) {
+	try {
+		if (database.is_open()) {
+			dataMapping(database, 1);
+			database.close();
+		} else
+			throw BTC::BTCERROR("Failed reading database file\n");
+	} catch (std::exception &e) {
+		std::cerr << BOLD RED "Error on database: " RESET << e.what();
+		return ;
+	} if (conversionFile.is_open()) {
 		dataMapping(conversionFile, 2);
 		conversionFile.close();
 	} else
@@ -76,12 +80,8 @@ void BTC::dataMapping(std::ifstream &base, int flag) {
 	switch (flag) {
 		case 1:
 			do {
-				if (checkFormat(line))
-					Mapping(line);
-				else {
-					throw BTC::BTCERROR("database creation failed\n");
-					return;
-				}
+				checkFormat(line);
+				Mapping(line);
 			} while (std::getline(base, line));
 			break;
 
@@ -93,7 +93,7 @@ void BTC::dataMapping(std::ifstream &base, int flag) {
 					findValue(temp);
 					printConversion(temp);
 				} catch (std::exception &e) {
-					std::cout << "Error: " << e.what();
+					std::cerr << BOLD RED "Error: " RESET << e.what() << BOLD MAGENTA << line << RESET "\n";
 				}
 			} while (std::getline(base, line));
 			break;
@@ -105,7 +105,7 @@ void BTC::dataMapping(std::ifstream &base, int flag) {
 };
 
 float BTC::convert() {
-	return (value * mapValue);
+	return (mapValue * value);
 };
 
 void BTC::Mapping(std::string &line) {
@@ -114,64 +114,61 @@ void BTC::Mapping(std::string &line) {
 }
 
 void BTC::printConversion(std::string &temp) {
-	std::cout << BOLD BLUE << temp << RESET " => " << value << " = " << convert() << std::endl;
+	std::cout << BOLD BLUE << temp << RESET " => " << value << " = " << std::fixed << std::setprecision(2) << convert() << std::endl;
 }
 
-bool BTC::checkFormat(std::string &line) {
+void BTC::checkFormat(std::string &line) {
 	char dash1, dash2, spe;
 	int year, month, day;
-	int daysInMonth[] = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 	std::istringstream iss(line);
 	iss >> year >> dash1 >> month >> dash2 >> day >> spe >> value;
 
 	if (iss.fail() || dash1 != '-' || dash2 != '-' || spe != ',') {
-		throw BTC::BTCERROR("wrong date format (YYYY-MM-DD)\n");
-		return false;
-	}
-	//CREATE A SEPARATE FUNCTION FOR CHECKING DATE VALIDITY??
-	if (month == 2 && day == 29) {
-		if ((!(year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)))) {
-			throw BTC::BTCERROR("date isn't correct\n");
-			return false;
-		}
-	}
-	if ((year < 1900 || year > 2025) && (month < 1 || month > 12) && (day <= daysInMonth[month])) {
-		throw BTC::BTCERROR("date isn't correct\n");
-		return false;
+		throw BTC::BTCERROR("wrong date format (YYYY-MM-DD,BTC)\n");
 	}
 	if (value < 0 || value > std::numeric_limits<float>::max())  {
-		throw BTC::BTCERROR("value requested isn't positive or too high (0 to 1000 only)\n");
-		return false;
+		throw BTC::BTCERROR("value requested isn't positive or too high\n");
 	}
-	return true;		
+	else if (!checkDateValidity(year, month, day))
+		throw BTC::BTCERROR("date isn't correct\n");
 };
 
 void BTC::checkFormatFile(std::string &line) {
 	int year, month, day;
 	char dash1, dash2, spe;
-	int daysInMonth[] = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 
 	std::istringstream iss(line);
 	iss >> year >> dash1 >> month >> dash2 >> day >> spe >> value;
 	
 	if (iss.fail() || dash1 != '-' || dash2 != '-' || spe != '|' || !isdigit(line[0]) || line[10] != ' ' || line[12] != ' ') {
-		throw BTC::BTCERROR("invalid input. Format = (YYYY-MM-DD | price)\n");
+		throw BTC::BTCERROR("invalid input. Format = (YYYY-MM-DD | price) --> ");
 	}
 	else if (value < 0 || value > 1000)  {
-		throw BTC::BTCERROR("value requested isn't positive or too high (0 to 1000 only)\n");
+		throw BTC::BTCERROR("value requested isn't positive or too high (0 to 1000 only) --> ");
 	}
-	//SEPARATE FUNCTION FOR CHECKING VALIDITY OF DATE ?? STRUCT FOR DATE + VALUE ??
-	else if (month == 2 && day == 29) {
+	else if (!checkDateValidity(year, month, day))
+		throw BTC::BTCERROR("date isn't correct --> ");
+};
+
+bool BTC::checkDateValidity(int year, int month, int day) {
+	int daysInMonth[] = {0, 31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	if (month == 2 && day == 29) {
 		if ((!(year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)))) {
-			throw BTC::BTCERROR("date isn't correct\n");
+			return false;
 		}
 	}
-	else if ((year < 1900 || year > 2025) && (month < 1 || month > 12) && (day <= daysInMonth[month])) {
-		throw BTC::BTCERROR("date isn't correct\n");
+	else if (year < 1900 || year > 2025) {
+		return false;
 	}
-	
-};
+	else if (month < 1 || month > 12) {
+		return false;
+	}
+	else if (day < 0 && day > daysInMonth[month]) {
+		return false;
+	}
+	return true;	
+}
 
 void BTC::findValue(const std::string &key) {
 	mapKey = btc.find(key);
