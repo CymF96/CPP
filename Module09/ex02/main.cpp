@@ -12,13 +12,29 @@
 
 #include "PmergeMe.hpp"
 
-size_t getSize(char** arr) {
-    size_t count = 0;
-    while (arr[count]) {
-        count++;
-    }
-    return count;
-}
+void generateSequenceVector(std::vector<int> &sequence, char **input, size_t size)
+{
+	int nb1;
+	size_t i = 1;
+	while (i < size)
+	{
+		nb1 = convertInt(input[i]);
+		sequence.push_back(nb1);
+		i++;
+	}
+};
+
+void generateSequenceDeque(std::deque<int> &sequence, char **input, size_t size)
+{
+	int nb1;
+	size_t i = 1;
+	while (i < size)
+	{
+		nb1 = convertInt(input[i]);
+		sequence.push_back(nb1);
+		i++;
+	}
+};
 
 int main(int ac, char **av) {
     if (ac < 2) {
@@ -26,6 +42,20 @@ int main(int ac, char **av) {
         return -1;
     }
     size_t size = getSize(av);
-    Pmerge::sorted(av, size);
+	std::vector<int> vec;
+	try {
+		generateSequenceVector(vec, av, size);
+	} catch (std::exception &e) {
+		std::cerr << BOLD RED "Error: " RESET << e.what();
+	}
+	PmergeMe(vec);
+
+	std::deque<int> deq;
+	try {
+		generateSequenceDeque(deq, av, size);
+	} catch (std::exception &e) {
+		std::cerr << BOLD RED "Error: " RESET << e.what();
+	}
+	PmergeMe(deq);
     return 0;
 }
