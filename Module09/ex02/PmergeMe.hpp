@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:50:22 by cofische          #+#    #+#             */
-/*   Updated: 2025/02/12 18:39:56 by cofische         ###   ########.fr       */
+/*   Updated: 2025/02/13 17:13:20 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#pragma once
 #include <iostream>
 #include <string>
 #include <vector>
@@ -21,134 +22,231 @@
 #include <algorithm>
 #include "../Colors.hpp"
 
+template <typename Iterator>
+bool comp(const Iterator& it1, const Iterator& it2) {
+        return *it1 < *it2;
+};
+
+template <typename V>
+void printSequence(V &container) {
+	typename V::iterator it = container.begin();
+	std::cout << BOLD BLUE "Sequence: " RESET;
+	for (; it != container.end(); ++it)
+		std::cout << *it << " ";
+	std::cout << std::endl;
+}
+
+template <typename V>
+void printSequenceIterator(V &container) {
+	typename V::iterator it = container.begin();
+	std::cout << BOLD YELLOW "Sequence of pointers: " RESET;
+	for (; it != container.end(); ++it)
+		std::cout << **it << " ";
+	std::cout << std::endl;
+}
+
+template <typename Iterator>
+void swapPairs(Iterator start, int step) {
+    Iterator right = start;  // Points to the end of the right pair
+    Iterator left = start;
+    std::advance(left, -step); // Points to the end of the left pair
+
+    std::cout << BOLD GREEN "In swapping," RESET " right: " << *right << ", left: " << *left << "\n";
+
+    // Swap the sequences element-by-element
+    for (int i = 0; i < step; ++i) {
+        std::iter_swap(right--, left--);
+    }
+}
+
+
 template <typename T>
 class PmergeMe {
 	public:
-		PmergeMe(T &container) { FJAS(container, 1); };
-		PmergeMe(const PmergeMe &other) {(void)other; };
-		PmergeMe& operator=(const PmergeMe &other) { (void)other; return *this; };
+		PmergeMe(T &inputContainer) : container(inputContainer), startInit(container.begin()) {  
+			sortedContainer.resize(container.size());
+			FJAS(1);
+		}
+		PmergeMe(const PmergeMe &other) : container(other.container) {}
+		PmergeMe& operator=(const PmergeMe &other) {
+			if (this != &other)
+				container = other.container; 
+			return *this; 
+		}
 		~PmergeMe() {};
 
 		typedef typename T::iterator Iterator;
 		typedef typename std::vector<Iterator>::iterator it_itv;
 		typedef typename std::vector<Iterator> itv;
-		
+
 		bool is_odd;
-		int pairs;
 		itv main;
 		itv pend;
+		Iterator last;
+		Iterator end;
 
+		void FJAS(int step) {
+			is_odd = 0;
+			pairs = 0;
+			pairing(step);
+			containerInitialisation(step);
+			jacobsthalSorting();
+			binarySorting(step);
+			storingSortedSequence(step);
+			finalSequence();
+			std::cout << BOLD "\n" BG_YELLOW "NEW RECURSION" RESET "\n";
+		}
 
-		void pairing (T &container, int level) {
-			pairs = container.size() / level;
-			if (pairs < 2)
-				return;
-			Iterator start = container.begin();
-			Iterator last = next(container.begin(), level * (pairs));
-			Iterator end = next(last, -(is_odd * level));
-			int jump = 2 * level;
-			for (Iterator it = start; it != end; std::advance(it, jump))
-			{
-				Iterator this_pair = next(it, level - 1);
-				Iterator next_pair = next(it, level * 2 - 1);
-				if (*this_pair > *next_pair)
-				{
-					_swap_pair(this_pair, level);
+		void pairing(int step) {
+			std::cout << UNDERLINE "check Pairing\n" RESET;
+			int pairs = container.size() / step;
+			if (pairs <= 2) return;
+			last = getIterator();
+			std::advance(last, step * (pairs) - 1);
+			end = last;
+			std::advance(end, -(pairs % 2 == 1 ? step : 0));
+			std::cout << "Pairs: " << pairs << "\n";
+			std::cout << "Start: " << *startInit << "\n";
+			std::cout << "Last: " << *last << "\n";
+			std::cout << "End: " << *end << "\n";
+			std::cout << "step: " << step << "\n";			
+			Iterator it = end;
+			for (int i = 0; i < pairs / 2; ++i) {
+				Iterator right = it;
+				Iterator left = it;
+				std::advance(left, -step);
+				std::cout << "Comparing: " << *right << " and " << *left << "\n";
+				if (right != container.end() && left != container.end()) {
+					if (*right < *left) {
+						swapPairs(right, step);
+						std::cout << "Swapped: " << *right << " and " << *left << "\n";
+					}
 				}
+				printSequence(container);
+				std::advance(it, -(2 * step));
 			}
-			FJAS(container, level * 2);
-			containerInitialisation(container, level, pairs);
+			std::cout << std::endl;
+			FJAS(step * 2);
 		}
 		
-		void containerInitialisation(T &container, int level, int pairs) {
-			main.insert(main.end(), next(container.begin(), level - 1));
-			main.insert(main.end(), next(container.begin(), level * 2 - 1));
-
-
-			for (int i = 4; i <= pairs; i += 2)
-			{
-				pend.insert(pend.end(), next(container.begin(), level * (i - 1) - 1));
-				main.insert(main.end(), next(container.begin(), level * i - 1));
+		void containerInitialisation(int step) {
+			std::cout << UNDERLINE "check Init container\n" RESET;
+			Iterator start = container.begin();
+			Iterator temp = start;
+			std::advance(temp, pairs * 2 - 1);
+			std::cout << BOLD MAGENTA "\nContainer: " RESET;
+			std::cout << *temp;
+			main.insert(main.end(), temp);
+			std::advance(temp, (pairs * 2));
+			main.insert(main.end(), temp);
+			std::cout << " " << *temp << " step: " << step / 2 << " pairs: " << pairs << std::endl;; 
+			printSequenceIterator(main);
+			for (int i = 4; i <= pairs; i += 2) {
+				Iterator pendTemp = start;
+				std::advance(pendTemp, step * (i - 1) - 1);
+				pend.insert(pend.end(), pendTemp);
+				printSequenceIterator(pend);
+				Iterator mainTemp = start;
+				std::advance(mainTemp, step * i - 1);
+				main.insert(main.end(), mainTemp);
 			}
 		}
 		
-		void jacobsthalSorting(T &container) {
+		void jacobsthalSorting() {
+			std::cout << UNDERLINE "\ncheck Jacobsthal sorting\n" RESET;
 			int prev_jacob = jacobsthal(1);
+			std::cout << BOLD CYAN "Jacobsthal: " << prev_jacob << "\n";
 			int insertion = 0;
-			for (int k = 2;; k++)
+			int i = 2;
+			while (1)
 			{
-				int curr_jacob = jacobsthal(k);
+				int curr_jacob = jacobsthal(i);
 				int jacobsthal_diff = curr_jacob - prev_jacob;
+				std::cout << BOLD CYAN "curr_jacob: " RESET << curr_jacob << BOLD CYAN ", jacob_diff: " RESET << jacobsthal_diff << "\n";
 				int offset = 0;
 				if (jacobsthal_diff > static_cast<int>(pend.size()))
 					break;
 				int nbr_of_times = jacobsthal_diff;
-				it_itv pend_it = next(pend.begin(), jacobsthal_diff - 1);
-				it_itv bound_it = next(main.begin(), curr_jacob + insertion);
+				std::cout << "enough jacobsthal?\n";
+				it_itv pend_it = pend.begin();
+				advance(pend_it, jacobsthal_diff - 1);
+				it_itv bound_it = main.begin();
+				advance(bound_it, curr_jacob + insertion);
 				while (nbr_of_times)
 				{
-					it_itv idx = std::upper_bound(main.begin(), bound_it, *pend_it, comp);
+					it_itv idx = std::upper_bound(main.begin(), bound_it, *pend_it, comp<Iterator>);
 					it_itv inserted = main.insert(idx, *pend_it);
 					nbr_of_times--;
 					pend_it = pend.erase(pend_it);
 					std::advance(pend_it, -1);
 					offset += (inserted - main.begin()) == curr_jacob + insertion;
-					bound_it = next(main.begin(), curr_jacob + insertion - offset);
+					advance(bound_it, curr_jacob + insertion - offset);
 				}
 				prev_jacob = curr_jacob;
 				insertion += jacobsthal_diff;
 				offset = 0;
+				i++;
 			}
 		}
 		
-		void binarySorting(T &container, int level, int pairs) {
-			Iterator last = next(container.begin(), level * (pairs));
-			Iterator end = next(last, -(is_odd * level));
+		void binarySorting(int step) {
+			std::cout << UNDERLINE "\ncheck Binary sorting\n" RESET;
+			last = container.begin();
+			std::advance(last, step * (pairs) - 1);
+			end = last;
+			std::advance(end, -(pairs % 2 == 1 ? step : 0));
+			std::cout << "Pairs: " << pairs << "\n";
+			std::cout << "Start: " << *startInit << "\n";
+			std::cout << "Last: " << *last << "\n";
+			std::cout << "End: " << *end << "\n";
+			std::cout << "step: " << step << "\n";	
 			for (size_t i = 0; i < pend.size(); i++) {
-				it_itv curr_pend = next(pend.begin(), i);
-				it_itv curr_bound = next(main.begin(), main.size() - pend.size() + i);
-				it_itv idx = std::upper_bound(main.begin(), curr_bound, *curr_pend, comp);
+				it_itv curr_pend = pend.begin();
+				advance(curr_pend, i);
+				it_itv curr_bound = main.begin();
+				advance(curr_bound, main.size() - pend.size() + i);
+				it_itv idx = std::upper_bound(main.begin(), curr_bound, *curr_pend, comp<Iterator>);
 				main.insert(idx, *curr_pend);
 			}
 			if (is_odd) {
-				Iterator odd_pair = next(end, level - 1);
-				it_itv idx = std::upper_bound(main.begin(), main.end(), odd_pair, comp);
+				Iterator odd_pair = end;
+				advance(odd_pair, step - 1);
+				it_itv idx = std::upper_bound(main.begin(), main.end(), odd_pair, comp<Iterator>);
 				main.insert(idx, odd_pair);
 			}
 		}
 		
-		void storingSortedSequence(T &container, int level) {
-			std::vector<int> copy;
-			copy.reserve(container.size());
-			for (it_itv it = main.begin(); it != main.end(); it++) {
-				for (int i = 0; i < level; i++) {
-					Iterator pair_start = *it;
-					std::advance(pair_start, -level + i + 1);
-					copy.insert(copy.end(), *pair_start);
+		void storingSortedSequence(int step) {
+			std::cout << "\ncheck sorting sequence\n";
+			for (it_itv it = main.begin(); it != main.end(); ++it) {
+				Iterator pair_start = *it;
+				for (int i = 0; i < step; ++i) {
+					Iterator curr = pair_start;
+					std::advance(curr, i);
+					sortedContainer.push_back(*curr);
 				}
 			}
 		}
 
-		void finalSequence(T &container) {
+		void finalSequence() {
+			std::cout << "\ncheck finalSequence\n";
 			Iterator container_it = container.begin();
-			std::vector<int>::iterator copy_it = copy.begin();
-			while (copy_it != copy.end())
-			{
-				*container_it = *copy_it;
+			Iterator sortedContainer_it = sortedContainer.begin();
+			while (sortedContainer_it != sortedContainer.end()) {
+				*container_it = *sortedContainer_it;
 				container_it++;
-				copy_it++;
+				sortedContainer_it++;
 			}
 		}
 		
-		void FJAS(T& container, int level) {
-			pairing(container, level);
-			jacobsthalSorting(container);
-			binarySorting(container, level);
-			storingSortedSequence(container, level);
-			finalSequence(container);
-		}
+		static int jacobsthal(int jIndex) { return round((pow(2, jIndex + 1) + pow(-1, jIndex)) / 3); };
 
-		bool comp(T lv, T rv) { return *lv < *rv; };
+		const T &getContainer() const { return sortedContainer; }
+		const Iterator getIterator() { return startInit; }
+	private:
+		T container;
+		T sortedContainer;
+		Iterator startInit;
 };
 
 class PmergeError : public std::exception {
@@ -160,6 +258,16 @@ class PmergeError : public std::exception {
 		virtual const char *what() const throw() { return message; };
 };
 
+template <typename U>
+std::ostream &operator<<(std::ostream &os, const PmergeMe <U> &obj) {
+	typename U::const_iterator it = obj.getContainer().begin();
+	for (; it != obj.getContainer().end(); ++it)
+		os << *it << " ";
+	os << "\n";
+	return os;
+};
+
 int convertInt(char *nbr);
-int jacobsthal(int jIndex);
 size_t getSize(char** arr);
+void generateSequenceDeque(std::deque<int> &sequence, char **input, size_t size);
+void generateSequenceVector(std::vector<int> &sequence, char **input, size_t size);
