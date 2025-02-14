@@ -1,0 +1,762 @@
+[1m
+[44mNEW PAIRING RECURSION[0m
+[4mcheck Pairing
+[0mPairs: 22
+Start: 11
+Last: 7
+End: 7
+step: 1
+Comparing: 7 and 13
+[1m[32mIn swapping,[0m right: 7, left: 13
+Swapped: 13 and 7
+11 2 17 0 16 8 6 15 10 3 21 1 18 9 14 19 12 5 4 20 7 13 
+Comparing: 20 and 4
+11 2 17 0 16 8 6 15 10 3 21 1 18 9 14 19 12 5 4 20 7 13 
+Comparing: 5 and 12
+[1m[32mIn swapping,[0m right: 5, left: 12
+Swapped: 12 and 5
+11 2 17 0 16 8 6 15 10 3 21 1 18 9 14 19 5 12 4 20 7 13 
+Comparing: 19 and 14
+11 2 17 0 16 8 6 15 10 3 21 1 18 9 14 19 5 12 4 20 7 13 
+Comparing: 9 and 18
+[1m[32mIn swapping,[0m right: 9, left: 18
+Swapped: 18 and 9
+11 2 17 0 16 8 6 15 10 3 21 1 9 18 14 19 5 12 4 20 7 13 
+Comparing: 1 and 21
+[1m[32mIn swapping,[0m right: 1, left: 21
+Swapped: 21 and 1
+11 2 17 0 16 8 6 15 10 3 1 21 9 18 14 19 5 12 4 20 7 13 
+Comparing: 3 and 10
+[1m[32mIn swapping,[0m right: 3, left: 10
+Swapped: 10 and 3
+11 2 17 0 16 8 6 15 3 10 1 21 9 18 14 19 5 12 4 20 7 13 
+Comparing: 15 and 6
+11 2 17 0 16 8 6 15 3 10 1 21 9 18 14 19 5 12 4 20 7 13 
+Comparing: 8 and 16
+[1m[32mIn swapping,[0m right: 8, left: 16
+Swapped: 16 and 8
+11 2 17 0 8 16 6 15 3 10 1 21 9 18 14 19 5 12 4 20 7 13 
+Comparing: 0 and 17
+[1m[32mIn swapping,[0m right: 0, left: 17
+Swapped: 17 and 0
+11 2 0 17 8 16 6 15 3 10 1 21 9 18 14 19 5 12 4 20 7 13 
+Comparing: 2 and 11
+[1m[32mIn swapping,[0m right: 2, left: 11
+Swapped: 11 and 2
+2 11 0 17 8 16 6 15 3 10 1 21 9 18 14 19 5 12 4 20 7 13 
+
+[1m
+[44mNEW PAIRING RECURSION[0m
+[4mcheck Pairing
+[0mPairs: 11
+Start: 2
+Last: 13
+End: 20
+step: 2
+Comparing: 20 and 12
+2 11 0 17 8 16 6 15 3 10 1 21 9 18 14 19 5 12 4 20 7 13 
+Comparing: 19 and 18
+2 11 0 17 8 16 6 15 3 10 1 21 9 18 14 19 5 12 4 20 7 13 
+Comparing: 21 and 10
+2 11 0 17 8 16 6 15 3 10 1 21 9 18 14 19 5 12 4 20 7 13 
+Comparing: 15 and 16
+[1m[32mIn swapping,[0m right: 15, left: 16
+Swapped: 16 and 15
+2 11 0 17 6 15 8 16 3 10 1 21 9 18 14 19 5 12 4 20 7 13 
+Comparing: 17 and 11
+2 11 0 17 6 15 8 16 3 10 1 21 9 18 14 19 5 12 4 20 7 13 
+20
+[1m[35mOdd: [0m7 13 
+
+[1m
+[44mNEW PAIRING RECURSION[0m
+[4mcheck Pairing
+[0mPairs: 5
+Start: 2
+Last: 20
+End: 19
+step: 4
+Comparing: 19 and 21
+[1m[32mIn swapping,[0m right: 19, left: 21
+Swapped: 21 and 19
+2 11 0 17 6 15 8 16 9 18 14 19 3 10 1 21 5 12 4 20 7 13 
+Comparing: 16 and 17
+[1m[32mIn swapping,[0m right: 16, left: 17
+Swapped: 17 and 16
+6 15 8 16 2 11 0 17 9 18 14 19 3 10 1 21 5 12 4 20 7 13 
+21
+[1m[35mOdd: [0m5 12 4 20 
+
+[1m
+[44mNEW PAIRING RECURSION[0m
+[4mcheck Pairing
+[0mPairs: 2
+Start: 6
+Last: 21
+End: 21
+step: 8
+Comparing: 21 and 17
+6 15 8 16 2 11 0 17 9 18 14 19 3 10 1 21 5 12 4 20 7 13 
+
+[1m
+[44mNEW PAIRING RECURSION[0m
+[4mcheck Pairing
+[0m[1m
+[43mNEW RECURSION[0m
+[4mcheck Init container
+[0mStep: 8, Pairs: 2
+
+B1: 6 to 17
+A1: 9 to 21
+[1m[35mContainer main: [0m6 15 8 16 2 11 0 17 
+9 18 14 19 3 10 1 21 
+6 15 8 16 2 11 0 17 9 18 14 19 3 10 1 21 5 12 4 20 7 13 
+[4m
+check Jacobsthal sorting
+[0m[1m[36mcurr_jacob: [0m3[1m[36m, jacob_diff: [0m2[1m[36m, pendSize: [0m0
+[4m
+check Binary sorting
+[0mPairs: 2, start: 6, last: 21, End: 21, step: 8
+pend.size: 0
+
+check sorting sequence
+[1m[35mNew sorted container pairs: [0m6 15 8 16 2 11 0 17 
+9 18 14 19 3 10 1 21 
+
+check finalSequence
+
+index: 22
+[1m[31mNew sorted container: [0m6 15 8 16 2 11 0 17 9 18 14 19 3 10 1 21 
+[1m
+[43mNEW RECURSION[0m
+[4mcheck Init container
+[0mStep: 4, Pairs: 5
+
+B1: 6 to 16
+A1: 2 to 17
+[1m[35mContainer main: [0m6 15 8 16 
+2 11 0 17 
+6 15 8 16 2 11 0 17 9 18 14 19 3 10 1 21 
+
+B2: 9 to 19
+[1m[35mContainer pending: [0m9 18 14 19 
+
+A2: 3 to 21
+[1m[35mNew container main: [0m6 15 8 16 
+2 11 0 17 
+3 10 1 21 
+[4m
+check Jacobsthal sorting
+[0m[1m[36mcurr_jacob: [0m3[1m[36m, jacob_diff: [0m2[1m[36m, pendSize: [0m1
+[4m
+check Binary sorting
+[0mPairs: 5, start: 6, last: 20, End: 21, step: 4
+pend.size: 1
+curr_pend->pack(): 19
+curr_bound->back(): 21
+INSIDE UPPERBOUND -- value: 19 containerValue: 16
+INSIDE UPPERBOUND -- value: 19 containerValue: 17
+[1m[35mNew container main: [0m6 15 8 16 
+2 11 0 17 
+3 10 1 21 
+9 18 14 19 
+odd_pair: 5, odd_pair_end: 20 odd_pair size: 1
+[1m[35mOdd_pair: [0m5 12 4 20 
+curr_pair: 20
+INSIDE UPPERBOUND -- value: 20 containerValue: 16
+INSIDE UPPERBOUND -- value: 20 containerValue: 17
+INSIDE UPPERBOUND -- value: 20 containerValue: 21
+
+check sorting sequence
+[1m[35mNew sorted container pairs: [0m6 15 8 16 
+2 11 0 17 
+5 12 4 20 
+3 10 1 21 
+9 18 14 19 
+
+check finalSequence
+
+index: 16
+[1m[31mNew sorted container: [0m6 15 8 16 2 11 0 17 5 12 4 20 3 10 1 21 9 18 14 19 
+[1m
+[43mNEW RECURSION[0m
+[4mcheck Init container
+[0mStep: 2, Pairs: 11
+
+B1: 6 to 15
+A1: 8 to 16
+[1m[35mContainer main: [0m6 15 
+8 16 
+6 15 8 16 2 11 0 17 5 12 4 20 3 10 1 21 9 18 14 19 
+
+B2: 2 to 11
+[1m[35mContainer pending: [0m2 11 
+
+A2: 0 to 17
+[1m[35mNew container main: [0m6 15 
+8 16 
+0 17 
+
+B2: 5 to 12
+[1m[35mContainer pending: [0m2 11 
+5 12 
+
+A2: 4 to 20
+[1m[35mNew container main: [0m6 15 
+8 16 
+0 17 
+4 20 
+
+B2: 3 to 10
+[1m[35mContainer pending: [0m2 11 
+5 12 
+3 10 
+
+A2: 1 to 21
+[1m[35mNew container main: [0m6 15 
+8 16 
+0 17 
+4 20 
+1 21 
+
+B2: 9 to 18
+[1m[35mContainer pending: [0m2 11 
+5 12 
+3 10 
+9 18 
+
+A2: 14 to 19
+[1m[35mNew container main: [0m6 15 
+8 16 
+0 17 
+4 20 
+1 21 
+14 19 
+[4m
+check Jacobsthal sorting
+[0m[1m[36mcurr_jacob: [0m3[1m[36m, jacob_diff: [0m2[1m[36m, pendSize: [0m4
+pend_it->back(): 12
+bound_it->back(): 20
+INSIDE UPPERBOUND -- value: 12 containerValue: 15
+5 12 
+6 15 
+8 16 
+0 17 
+4 20 
+1 21 
+14 19 
+INSIDE UPPERBOUND -- value: 11 containerValue: 12
+2 11 
+5 12 
+6 15 
+8 16 
+0 17 
+4 20 
+1 21 
+14 19 
+[1m[36mcurr_jacob: [0m5[1m[36m, jacob_diff: [0m2[1m[36m, pendSize: [0m2
+pend_it->back(): 18
+bound_it->back(): 19
+INSIDE UPPERBOUND -- value: 18 containerValue: 11
+INSIDE UPPERBOUND -- value: 18 containerValue: 12
+INSIDE UPPERBOUND -- value: 18 containerValue: 15
+INSIDE UPPERBOUND -- value: 18 containerValue: 16
+INSIDE UPPERBOUND -- value: 18 containerValue: 17
+INSIDE UPPERBOUND -- value: 18 containerValue: 20
+2 11 
+5 12 
+6 15 
+8 16 
+0 17 
+9 18 
+4 20 
+1 21 
+14 19 
+INSIDE UPPERBOUND -- value: 10 containerValue: 11
+3 10 
+2 11 
+5 12 
+6 15 
+8 16 
+0 17 
+9 18 
+4 20 
+1 21 
+14 19 
+[1m[36mcurr_jacob: [0m11[1m[36m, jacob_diff: [0m6[1m[36m, pendSize: [0m0
+[4m
+check Binary sorting
+[0mPairs: 11, start: 6, last: 13, End: 19, step: 2
+pend.size: 0
+odd_pair: 7, odd_pair_end: 13 odd_pair size: 1
+[1m[35mOdd_pair: [0m7 13 
+curr_pair: 13
+INSIDE UPPERBOUND -- value: 13 containerValue: 10
+INSIDE UPPERBOUND -- value: 13 containerValue: 11
+INSIDE UPPERBOUND -- value: 13 containerValue: 12
+INSIDE UPPERBOUND -- value: 13 containerValue: 15
+
+check sorting sequence
+[1m[35mNew sorted container pairs: [0m3 10 
+2 11 
+5 12 
+7 13 
+6 15 
+8 16 
+0 17 
+9 18 
+4 20 
+1 21 
+14 19 
+
+check finalSequence
+
+index: 20
+[1m[31mNew sorted container: [0m3 10 2 11 5 12 7 13 6 15 8 16 0 17 9 18 4 20 1 21 14 19 
+[1m
+[43mNEW RECURSION[0m
+[4mcheck Init container
+[0mStep: 1, Pairs: 22
+
+B1: 3 to 3
+A1: 10 to 10
+[1m[35mContainer main: [0m3 
+10 
+3 10 2 11 5 12 7 13 6 15 8 16 0 17 9 18 4 20 1 21 14 19 
+
+B2: 2 to 2
+[1m[35mContainer pending: [0m2 
+
+A2: 11 to 11
+[1m[35mNew container main: [0m3 
+10 
+11 
+
+B2: 5 to 5
+[1m[35mContainer pending: [0m2 
+5 
+
+A2: 12 to 12
+[1m[35mNew container main: [0m3 
+10 
+11 
+12 
+
+B2: 7 to 7
+[1m[35mContainer pending: [0m2 
+5 
+7 
+
+A2: 13 to 13
+[1m[35mNew container main: [0m3 
+10 
+11 
+12 
+13 
+
+B2: 6 to 6
+[1m[35mContainer pending: [0m2 
+5 
+7 
+6 
+
+A2: 15 to 15
+[1m[35mNew container main: [0m3 
+10 
+11 
+12 
+13 
+15 
+
+B2: 8 to 8
+[1m[35mContainer pending: [0m2 
+5 
+7 
+6 
+8 
+
+A2: 16 to 16
+[1m[35mNew container main: [0m3 
+10 
+11 
+12 
+13 
+15 
+16 
+
+B2: 0 to 0
+[1m[35mContainer pending: [0m2 
+5 
+7 
+6 
+8 
+0 
+
+A2: 17 to 17
+[1m[35mNew container main: [0m3 
+10 
+11 
+12 
+13 
+15 
+16 
+17 
+
+B2: 9 to 9
+[1m[35mContainer pending: [0m2 
+5 
+7 
+6 
+8 
+0 
+9 
+
+A2: 18 to 18
+[1m[35mNew container main: [0m3 
+10 
+11 
+12 
+13 
+15 
+16 
+17 
+18 
+
+B2: 4 to 4
+[1m[35mContainer pending: [0m2 
+5 
+7 
+6 
+8 
+0 
+9 
+4 
+
+A2: 20 to 20
+[1m[35mNew container main: [0m3 
+10 
+11 
+12 
+13 
+15 
+16 
+17 
+18 
+20 
+
+B2: 1 to 1
+[1m[35mContainer pending: [0m2 
+5 
+7 
+6 
+8 
+0 
+9 
+4 
+1 
+
+A2: 21 to 21
+[1m[35mNew container main: [0m3 
+10 
+11 
+12 
+13 
+15 
+16 
+17 
+18 
+20 
+21 
+
+B2: 14 to 14
+[1m[35mContainer pending: [0m2 
+5 
+7 
+6 
+8 
+0 
+9 
+4 
+1 
+14 
+
+A2: 19 to 19
+[1m[35mNew container main: [0m3 
+10 
+11 
+12 
+13 
+15 
+16 
+17 
+18 
+20 
+21 
+19 
+[4m
+check Jacobsthal sorting
+[0m[1m[36mcurr_jacob: [0m3[1m[36m, jacob_diff: [0m2[1m[36m, pendSize: [0m10
+pend_it->back(): 5
+bound_it->back(): 12
+INSIDE UPPERBOUND -- value: 5 containerValue: 3
+INSIDE UPPERBOUND -- value: 5 containerValue: 10
+3 
+5 
+10 
+11 
+12 
+13 
+15 
+16 
+17 
+18 
+20 
+21 
+19 
+INSIDE UPPERBOUND -- value: 2 containerValue: 3
+2 
+3 
+5 
+10 
+11 
+12 
+13 
+15 
+16 
+17 
+18 
+20 
+21 
+19 
+[1m[36mcurr_jacob: [0m5[1m[36m, jacob_diff: [0m2[1m[36m, pendSize: [0m8
+pend_it->back(): 6
+bound_it->back(): 15
+INSIDE UPPERBOUND -- value: 6 containerValue: 2
+INSIDE UPPERBOUND -- value: 6 containerValue: 3
+INSIDE UPPERBOUND -- value: 6 containerValue: 5
+INSIDE UPPERBOUND -- value: 6 containerValue: 10
+2 
+3 
+5 
+6 
+10 
+11 
+12 
+13 
+15 
+16 
+17 
+18 
+20 
+21 
+19 
+INSIDE UPPERBOUND -- value: 7 containerValue: 2
+INSIDE UPPERBOUND -- value: 7 containerValue: 3
+INSIDE UPPERBOUND -- value: 7 containerValue: 5
+INSIDE UPPERBOUND -- value: 7 containerValue: 6
+INSIDE UPPERBOUND -- value: 7 containerValue: 10
+2 
+3 
+5 
+6 
+7 
+10 
+11 
+12 
+13 
+15 
+16 
+17 
+18 
+20 
+21 
+19 
+[1m[36mcurr_jacob: [0m11[1m[36m, jacob_diff: [0m6[1m[36m, pendSize: [0m6
+pend_it->back(): 14
+bound_it->back(): 19
+INSIDE UPPERBOUND -- value: 14 containerValue: 2
+INSIDE UPPERBOUND -- value: 14 containerValue: 3
+INSIDE UPPERBOUND -- value: 14 containerValue: 5
+INSIDE UPPERBOUND -- value: 14 containerValue: 6
+INSIDE UPPERBOUND -- value: 14 containerValue: 7
+INSIDE UPPERBOUND -- value: 14 containerValue: 10
+INSIDE UPPERBOUND -- value: 14 containerValue: 11
+INSIDE UPPERBOUND -- value: 14 containerValue: 12
+INSIDE UPPERBOUND -- value: 14 containerValue: 13
+INSIDE UPPERBOUND -- value: 14 containerValue: 15
+2 
+3 
+5 
+6 
+7 
+10 
+11 
+12 
+13 
+14 
+15 
+16 
+17 
+18 
+20 
+21 
+19 
+INSIDE UPPERBOUND -- value: 1 containerValue: 2
+1 
+2 
+3 
+5 
+6 
+7 
+10 
+11 
+12 
+13 
+14 
+15 
+16 
+17 
+18 
+20 
+21 
+19 
+INSIDE UPPERBOUND -- value: 4 containerValue: 1
+INSIDE UPPERBOUND -- value: 4 containerValue: 2
+INSIDE UPPERBOUND -- value: 4 containerValue: 3
+INSIDE UPPERBOUND -- value: 4 containerValue: 5
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+10 
+11 
+12 
+13 
+14 
+15 
+16 
+17 
+18 
+20 
+21 
+19 
+INSIDE UPPERBOUND -- value: 9 containerValue: 1
+INSIDE UPPERBOUND -- value: 9 containerValue: 2
+INSIDE UPPERBOUND -- value: 9 containerValue: 3
+INSIDE UPPERBOUND -- value: 9 containerValue: 4
+INSIDE UPPERBOUND -- value: 9 containerValue: 5
+INSIDE UPPERBOUND -- value: 9 containerValue: 6
+INSIDE UPPERBOUND -- value: 9 containerValue: 7
+INSIDE UPPERBOUND -- value: 9 containerValue: 10
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+9 
+10 
+11 
+12 
+13 
+14 
+15 
+16 
+17 
+18 
+20 
+21 
+19 
+INSIDE UPPERBOUND -- value: 0 containerValue: 1
+0 
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+9 
+10 
+11 
+12 
+13 
+14 
+15 
+16 
+17 
+18 
+20 
+21 
+19 
+INSIDE UPPERBOUND -- value: 8 containerValue: 0
+INSIDE UPPERBOUND -- value: 8 containerValue: 1
+INSIDE UPPERBOUND -- value: 8 containerValue: 2
+INSIDE UPPERBOUND -- value: 8 containerValue: 3
+INSIDE UPPERBOUND -- value: 8 containerValue: 4
+INSIDE UPPERBOUND -- value: 8 containerValue: 5
+INSIDE UPPERBOUND -- value: 8 containerValue: 6
+INSIDE UPPERBOUND -- value: 8 containerValue: 7
+INSIDE UPPERBOUND -- value: 8 containerValue: 9
+0 
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+8 
+9 
+10 
+11 
+12 
+13 
+14 
+15 
+16 
+17 
+18 
+20 
+21 
+19 
+[1m[36mcurr_jacob: [0m21[1m[36m, jacob_diff: [0m10[1m[36m, pendSize: [0m0
+[4m
+check Binary sorting
+[0mPairs: 22, start: 3, last: 19, End: 19, step: 1
+pend.size: 0
+
+check sorting sequence
+[1m[35mNew sorted container pairs: [0m0 
+1 
+2 
+3 
+4 
+5 
+6 
+7 
+8 
+9 
+10 
+11 
+12 
+13 
+14 
+15 
+16 
+17 
+18 
+20 
+21 
+19 
+
+check finalSequence
+
+index: 22
+[1m[31mNew sorted container: [0m0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 20 21 19 
+Sorted sequence: 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 20 21 19 
+
