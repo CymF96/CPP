@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:50:22 by cofische          #+#    #+#             */
-/*   Updated: 2025/02/17 11:50:55 by cofische         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:30:58 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -181,7 +181,6 @@ class PmergeMe {
 			{
 				int curr_jacob = jacobsthal(i);
 				int jacobsthal_diff = curr_jacob - prev_jacob;
-				int offset = 0;
 				if (jacobsthal_diff > static_cast<int>(pend.size()))
 					break;
 				int insertion_nbr = jacobsthal_diff;
@@ -191,18 +190,16 @@ class PmergeMe {
 				advance(bound_it, curr_jacob + insertion);
 				while (insertion_nbr) {
 					it_vec idx = upperBound(main, bound_it, pend_it->back());
-					it_vec inserted = main.insert(idx, *pend_it);
+					main.insert(idx, *pend_it);
 					insertion_nbr--;
 					pend_it = pend.erase(pend_it);
 					if (pend_it != pend.begin()){
 						std::advance(pend_it, -1);	
 					}
-					offset += (inserted - main.begin()) == curr_jacob + insertion;
-					bound_it = main.begin() + (curr_jacob + insertion_nbr - offset);
+					bound_it = main.begin() + (curr_jacob + insertion_nbr);
 				}
 				prev_jacob = curr_jacob;
 				insertion += jacobsthal_diff;
-				offset = 0;
 				i++;
 			}
 		}
