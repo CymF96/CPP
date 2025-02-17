@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PmergeMe1.hpp                                      :+:      :+:    :+:   */
+/*   PmergeMe_Debugging.hpp                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:50:22 by cofische          #+#    #+#             */
-/*   Updated: 2025/02/17 11:19:18 by cofische         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:30:30 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <deque>
 #include <math.h>
 #include <algorithm>
-#include "../Colors.hpp"
+#include "../../Colors.hpp"
 
 template <typename Container>
 bool comp(int value1, const Container &cont) {
@@ -217,7 +217,6 @@ class PmergeMe {
 				int curr_jacob = jacobsthal(i);
 				int jacobsthal_diff = curr_jacob - prev_jacob;
 				std::cout << BOLD CYAN "curr_jacob: " RESET << curr_jacob << BOLD CYAN ", jacob_diff: " RESET << jacobsthal_diff << BOLD CYAN ", pendSize: " RESET << pend.size() << "\n";
-				int offset = 0;
 				if (jacobsthal_diff > static_cast<int>(pend.size()))
 					break;
 				int insertion_nbr = jacobsthal_diff;
@@ -237,7 +236,7 @@ class PmergeMe {
 					// std::cout << "pend_it->back() in loop: " << (pend_it->back()) << "\n";
 					// std::cout << "bound_it->back() in loop: " << (bound_it->back()) << "\n";
 					it_vec idx = upperBound(main, bound_it, pend_it->back());
-					it_vec inserted = main.insert(idx, *pend_it);
+					main.insert(idx, *pend_it); //it_vec inserted = 
 					std::cout << BOLD MAGENTA "Main in loop: " RESET "\n";
 					printSequenceVector(main);
 					insertion_nbr--;
@@ -246,13 +245,11 @@ class PmergeMe {
 						std::advance(pend_it, -1);	
 					}
 					std::cout << "pend_it->back() in loop: " << ((pend_it)->back()) << " -- pend.begin()->back() in loop: " << ((pend.begin())->back()) <<"\n";
-					offset += (inserted - main.begin()) == curr_jacob + insertion;
-					bound_it = main.begin() + (curr_jacob + insertion_nbr - offset);
+					bound_it = main.begin() + (curr_jacob + insertion_nbr);
 					std::cout << "bound_it->back() in loop: " << (bound_it->back()) << "\n";
 				}
 				prev_jacob = curr_jacob;
 				insertion += jacobsthal_diff;
-				offset = 0;
 				i++;
 			}
 		}
