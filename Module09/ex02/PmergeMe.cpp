@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/10 17:40:56 by cofische          #+#    #+#             */
-/*   Updated: 2025/02/17 11:43:07 by cofische         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:44:01 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,12 +61,4 @@ int convertInt(char *nbr) {
 	return static_cast<int>(nb);
 };
 
-
-// template <typename V>
-// void printSequence(V &container) {
-// 	typename V::iterator it = container.begin();
-// 	for (; it != container.end(); ++it)
-// 		std::cout << *it << " ";
-// 	std::cout << std::endl;
-// }
 

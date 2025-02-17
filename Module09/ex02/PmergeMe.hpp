@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:50:22 by cofische          #+#    #+#             */
-/*   Updated: 2025/02/17 14:30:58 by cofische         ###   ########.fr       */
+/*   Updated: 2025/02/17 16:09:15 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,13 @@
 #include <ctime>
 #include <deque>
 #include <math.h>
+#include <iomanip>
 #include <algorithm>
 #include "../Colors.hpp"
+
+/****************************************/
+/********HELPER TEMPLATE FUNCTIONS*******/
+/****************************************/
 
 template <typename Container>
 bool comp(int value1, const Container &cont) {
@@ -49,32 +54,12 @@ void printSequence(V &container) {
 	std::cout << std::endl;
 }
 
-
-// template <typename V>
-// void printSequenceVector(std::vector<V> &container) {
-// 	typename std::vector<V>::iterator it = container.begin();
-// 	for (; it != container.end(); ++it) {
-// 		for (typename V::iterator itv = it->begin(); itv != it->end(); ++itv) {
-// 			std::cout << *itv << " ";
-// 		}
-// 		std::cout << std::endl;
-// 	}
-// }
-
-// template <typename V>
-// void printSequenceIterator(V &container) {
-// 	typename V::iterator it = container.begin();
-// 	for (; it != container.end(); ++it)
-// 		std::cout << **it << " ";
-// 	std::cout << std::endl;
-// }
-
 template <typename Iterator>
-void swapPairs(Iterator start, int step) {
+void swapPairs(Iterator start, int nbrInPairs) {
 	Iterator right = start;
 	Iterator left = start;
-	std::advance(left, -step);
-	for (int i = 0; i < step; ++i) {
+	std::advance(left, -nbrInPairs);
+	for (int i = 0; i < nbrInPairs; ++i) {
 		std::iter_swap(right--, left--);
 	}
 }
@@ -86,11 +71,19 @@ Vec insertRange(Iterator start, Iterator end) {
 	return pair;
 }
 
+/****************************************/
+/********TEMPLATE CLASS TO SORT**********/
+/****************************************/
+
 template <typename T>
 class PmergeMe {
 	public:
-		PmergeMe(T &inputContainer) : container(inputContainer), startInit(container.begin()) {  
-			FJAS(1);
+		/******************************/
+		/********CONSTRUCTORS**********/
+		/******************************/
+		
+		PmergeMe(T &inputContainer) : container(inputContainer) {  
+			FordJohsonAlgo(1);
 		}
 		PmergeMe(const PmergeMe &other) : container(other.container) {}
 		PmergeMe& operator=(const PmergeMe &other) {
@@ -100,78 +93,109 @@ class PmergeMe {
 		}
 		~PmergeMe() {};
 
+		/******************************/
+		/********TYPENAME DEF**********/
+		/******************************/
+
 		typedef typename T::iterator Iterator;
 		typedef typename std::vector<T> Vec;
 		typedef typename Vec::iterator it_vec;
-		typedef typename std::vector<Iterator>::iterator it_itv;
-		typedef typename std::vector<Iterator> itv;
 
 		bool is_odd;
-		itv main;
-		itv pend;
-		it_vec start;
+		Iterator start;
 		Iterator last;
-		Iterator end_pairs;
+		Iterator end_nbrOfPairs;
 
-		void FJAS(int step) {
-			int pairs = container.size() / step;
-			is_odd = pairs % 2;
-			if (pairs <= 1) return;
-			last = getIterator();
-			std::advance(last, step * (pairs) - 1);
-			end_pairs = last;
-			std::advance(end_pairs, -(pairs % 2 == 1 ? step : 0));		
-			Iterator it = end_pairs;
-			for (int i = 0; i < pairs / 2; ++i) {
+		/*************************/
+		/********METHODS**********/
+		/*************************/
+
+		/****************************************/
+		//	Calling recursively Ford_Johnson Algorithm to generate the pairs until having the set of {b1,a1} 
+		//	If odd elements are detected, the odd_pairs are separated and store in a odd containers for later insertion
+		//	Once the sequence has been split in pairs group, the sorting part start
+		/****************************************/
+		
+		void FordJohsonAlgo(int nbrInPairs) {
+			int nbrOfPairs = container.size() / nbrInPairs;
+			is_odd = nbrOfPairs % 2;
+			if (nbrOfPairs <= 1) return;
+			
+			last = container.begin();
+			std::advance(last, nbrInPairs * (nbrOfPairs) - 1);
+			end_nbrOfPairs = last;
+			std::advance(end_nbrOfPairs, -(nbrOfPairs % 2 == 1 ? nbrInPairs : 0));		
+			Iterator it = end_nbrOfPairs;
+			for (int i = 0; i < nbrOfPairs / 2; ++i) {
 				Iterator right = it;
 				Iterator left = it;
-				std::advance(left, -step);
+				std::advance(left, -nbrInPairs);
 				if (right != container.end() && left != container.end()) {
 					if (*right < *left) {
-						swapPairs(right, step);
+						swapPairs(right, nbrInPairs);
 					}
 				}
-				std::advance(it, -(2 * step));
+				std::advance(it, -(2 * nbrInPairs));
 			}
 			T odd;
 			if (is_odd) {
-				Iterator it = end_pairs + 1;
-				for (int i = 0; i < step; i++) {
+				Iterator it = end_nbrOfPairs + 1;
+				for (int i = 0; i < nbrInPairs; i++) {
 					odd.push_back(*it++);
 				}
 			}
-			FJAS(step * 2);
-			containerInitialisation(step, pairs, odd);
+			FordJohsonAlgo(nbrInPairs * 2);
+			containerInitialisation(nbrInPairs, nbrOfPairs, odd);
 		}
 		
-		void containerInitialisation(int step, int pairs, T &odd) {
-			Vec main1;
-			Vec pend1;
-			if (!main1.empty())
+		/****************************************/
+		//	For each recursive level, gennerate the main and pending container following Ford-Johnson algo
+		//	We empty the main and pending containers from previous recursion before inserting pairs
+		//	Main --> compose of B1 + A1 + all remaining As (A2,A3,A4 etc...)
+		//	Pending -- > compose of B2 + all remining Bs (B3,B4,B5, etc...)
+		//	Once the containers of pairs are ready, we sort this pairs level
+		/****************************************/
+
+		void containerInitialisation(int nbrInPairs, int nbrOfPairs, T &odd) {
+			Vec main;
+			Vec pend;
+			if (!main.empty())
 				main.clear();
-			if (!pend1.empty())
-				pend1.clear();
-			Iterator start = container.begin();
+			if (!pend.empty())
+				pend.clear();
+			start = container.begin();
 			Iterator temp = start;
-			std::advance(temp, step);
-			main1.insert(main1.begin(), insertRange<T>(start, temp));
+			std::advance(temp, nbrInPairs);
+			main.insert(main.begin(), insertRange<T>(start, temp));
 			start = temp;
-			std::advance(temp, step);
-			main1.insert(main1.end(), insertRange<T>(start, temp));
-			for (int i = 2; i < pairs - 1; i += 2) {
+			std::advance(temp, nbrInPairs);
+			main.insert(main.end(), insertRange<T>(start, temp));
+			for (int i = 2; i < nbrOfPairs - 1; i += 2) {
 				Iterator pendStart = temp;
 				Iterator pendEnd = pendStart;
-				std::advance(pendEnd, step);
-				pend1.insert(pend1.end(), insertRange<T>(pendStart, pendEnd));
+				std::advance(pendEnd, nbrInPairs);
+				pend.insert(pend.end(), insertRange<T>(pendStart, pendEnd));
 				start = pendEnd;
 				temp = start;
-				std::advance(temp, step);
-				main1.insert(main1.end(), insertRange<T>(start, temp));
+				std::advance(temp, nbrInPairs);
+				main.insert(main.end(), insertRange<T>(start, temp));
 			}
-			jacobsthalSorting(main1, pend1);
-			binarySorting(main1, pend1, step, pairs, odd);
-			storingSortedSequence(main1, step);
+			jacobsthalSorting(main, pend);
+			binarySorting(main, pend, nbrInPairs, nbrOfPairs, odd);
+			storingSortedSequence(main, nbrInPairs);
 		}
+		
+		/****************************************/
+		//	Calculating the jacobsthal number to insert the pairs in order 
+		//	If there is not enough pending elements, we directly move to binary insertion function
+		//	example --> Jacobsthal = 3, the difference from previous is 3 - 1 = 2
+		//	We insert 2 elements starting by the '3' or B3 than B2
+		//	pending = { {b2}, {b3}} 
+		//	main = { {b1}, {a1}, {a2}, {a3}}
+		//	1st insertion is {b3}
+		//	2nd insertion is {b2}
+		//	For the insertion we use the binary insertion method with a custom upperBound function which return the index of the pair to insert in the main container
+		/****************************************/
 		
 		void jacobsthalSorting(Vec &main, Vec &pend) {
 			int prev_jacob = jacobsthal(1);
@@ -204,11 +228,17 @@ class PmergeMe {
 			}
 		}
 		
-		void binarySorting(Vec &main, Vec &pend, int step, int pairs, T &odd) {
+		/****************************************/
+		//	We use the same method as for the jacobsthal insertion (binary insertion). 
+		//	As we don't have enough element in pending, we insert them from right to left
+		//	Once pending is empty, we insert the matching odd pair from Odd container if there is one
+		/****************************************/
+
+		void binarySorting(Vec &main, Vec &pend, int nbrInPairs, int nbrOfPairs, T &odd) {
 			last = container.begin();
-			std::advance(last, step * (pairs) - 1);
-			end_pairs = last;
-			std::advance(end_pairs, -(pairs % 2 == 1 ? step : 0));
+			std::advance(last, nbrInPairs * (nbrOfPairs) - 1);
+			end_nbrOfPairs = last;
+			std::advance(end_nbrOfPairs, -(nbrOfPairs % 2 == 1 ? nbrInPairs : 0));
 			for (size_t i = 0; i < pend.size(); i++) {
 				it_vec curr_pend = pend.begin();
 				advance(curr_pend, i);
@@ -220,7 +250,7 @@ class PmergeMe {
 			if (is_odd && !odd.empty()) {
 				Iterator odd_pair_start = odd.begin();
 				Iterator odd_pair_end = odd_pair_start;
-				advance(odd_pair_end, step);
+				advance(odd_pair_end, nbrInPairs);
 				Vec odd_pair;
 				odd_pair.insert(odd_pair.begin(), insertRange<T>(odd_pair_start, odd_pair_end));
 				it_vec curr = odd_pair.begin();
@@ -230,8 +260,12 @@ class PmergeMe {
 			}
 		}
 		
-		void storingSortedSequence(Vec &main, int step) {
-			(void)step;
+		/****************************************/
+		//	Once the pair sorting is done for this pair level, we copy the elements from main to a temp pairing container (vector of container)
+		/****************************************/
+		
+		void storingSortedSequence(Vec &main, int nbrInPairs) {
+			(void)nbrInPairs;
 			Vec sortedContainer;
 			for (it_vec it = main.begin(); it != main.end(); ++it) {
 				T pair_start = *it;
@@ -239,6 +273,11 @@ class PmergeMe {
 			}
 			finalSequence(sortedContainer);
 		}
+		
+		/****************************************/
+		//	We clear the initial container and replace it with the sorting element of the temp pairing container
+		//	To match the container format, we insert elements of the pairs one by one with a nesting for loop
+		/****************************************/
 
 		void finalSequence(Vec &sortedContainer) {
 			container.clear();
@@ -254,12 +293,14 @@ class PmergeMe {
 		static int jacobsthal(int jIndex) { return round((pow(2, jIndex + 1) + pow(-1, jIndex)) / 3); };
 
 		const T &getContainer() const { return container; }
-		const Iterator getIterator() { return startInit; }
 		
 	private:
 		T container;
-		Iterator startInit;
 };
+
+/*************************************/
+/********EXCEPTION FUNCTIONS**********/
+/*************************************/
 
 class PmergeError : public std::exception {
 	private:
@@ -269,6 +310,10 @@ class PmergeError : public std::exception {
 		PmergeError(const char *msg) : message(msg) {};
 		virtual const char *what() const throw() { return message; };
 };
+
+/*************************************/
+/********OS OPERATOR OVERLOAD*********/
+/*************************************/
 
 template <typename U>
 std::ostream &operator<<(std::ostream &os, const PmergeMe <U> &obj) {

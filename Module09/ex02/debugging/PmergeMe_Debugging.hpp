@@ -6,7 +6,7 @@
 /*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:50:22 by cofische          #+#    #+#             */
-/*   Updated: 2025/02/17 14:30:30 by cofische         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:34:03 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,13 +72,11 @@ void printSequenceIterator(V &container) {
 
 template <typename Iterator>
 void swapPairs(Iterator start, int step) {
-	Iterator right = start;  // Points to the end of the right pair
+	Iterator right = start;
 	Iterator left = start;
-	std::advance(left, -step); // Points to the end of the left pair
+	std::advance(left, -step);
 
 	std::cout << BOLD GREEN "In swapping," RESET " right: " << *right << ", left: " << *left << "\n";
-
-	// Swap the sequences element-by-element
 	for (int i = 0; i < step; ++i) {
 		std::iter_swap(right--, left--);
 	}
@@ -233,10 +231,8 @@ class PmergeMe {
 				std::cout << "bound_it->back(): " << (bound_it->back()) << "\n";
 				std::cout << BG_BRIGHT_GREEN BOLD BLACK"\nIN LOOP\n" RESET;
 				while (insertion_nbr) {
-					// std::cout << "pend_it->back() in loop: " << (pend_it->back()) << "\n";
-					// std::cout << "bound_it->back() in loop: " << (bound_it->back()) << "\n";
 					it_vec idx = upperBound(main, bound_it, pend_it->back());
-					main.insert(idx, *pend_it); //it_vec inserted = 
+					main.insert(idx, *pend_it);
 					std::cout << BOLD MAGENTA "Main in loop: " RESET "\n";
 					printSequenceVector(main);
 					insertion_nbr--;
