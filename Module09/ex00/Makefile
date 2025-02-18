@@ -1,6 +1,6 @@
 NAME = btc
 CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 OBJ = OBJ
 CFILES = main.cpp BitcoinExchange.cpp
 OFILES = $(patsubst %.cpp, $(OBJ)/%.o, $(CFILES))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/05 14:53:57 by cofische          #+#    #+#             */
-/*   Updated: 2025/02/07 10:06:35 by cofische         ###   ########.fr       */
+/*   Updated: 2025/02/18 10:20:49 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ float value;
 /*******************************/
 /**********CONSTRUCTORS*********/
 /*******************************/
-
+// BTC::BTC(const std::string &filename) : mapKey(0), mapValue(0), database("CSV/error_data.csv"), conversionFile(filename.c_str()) {
 BTC::BTC(const std::string &filename) : mapKey(0), mapValue(0), database("CSV/data.csv"), conversionFile(filename.c_str()) {
 	try {
 		if (database.is_open()) {
@@ -164,7 +164,7 @@ bool BTC::checkDateValidity(int year, int month, int day) {
 	else if (month < 1 || month > 12) {
 		return false;
 	}
-	else if (day < 0 && day > daysInMonth[month]) {
+	else if (day < 0 || day > daysInMonth[month]) {
 		return false;
 	}
 	return true;	

@@ -1,18 +1,12 @@
 NAME = PmergeMe
 DEBUG = PmergeMe_debug
 CXX = c++
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -g
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98
 OBJ = OBJ
-
-# Normal build sources and objects
 CFILES = main.cpp PmergeMe.cpp
 OFILES = $(patsubst %.cpp, $(OBJ)/%.o, $(CFILES))
-
-# Debugging sources and objects
 CFILES_DEBUG = debugging/main_Debugging.cpp debugging/PmergeMe_Debugging.cpp
 OFILES_DEBUG = $(patsubst debugging/%.cpp, $(OBJ)/debugging/%.o, $(CFILES_DEBUG))
-
-# Header files
 COLOR_DIR = ..
 HFILES = PmergeMe.hpp $(COLOR_DIR)/Colors.hpp
 HFILES_DEBUG = debugging/PmergeMe_Debugging.hpp $(COLOR_DIR)/Colors.hpp
@@ -20,17 +14,14 @@ HFILES_DEBUG = debugging/PmergeMe_Debugging.hpp $(COLOR_DIR)/Colors.hpp
 all: $(NAME)
 debug: $(DEBUG)
 
-# Normal program build
 $(NAME): $(OFILES)
 	@$(CXX) $(CXXFLAGS) $(OFILES) -o $(NAME)
 	@echo "Making $@ program"
 
-# Debugging program build
 $(DEBUG): $(OFILES_DEBUG)
 	@$(CXX) $(CXXFLAGS) $(OFILES_DEBUG) -o $(DEBUG)
 	@echo "Making $@ debugging program"
 
-# Rule for normal object files
 $(OBJ)/%.o: %.cpp $(HFILES)
 	@mkdir -p $(OBJ)
 	@$(CXX) $(CXXFLAGS) -c $< -o $@

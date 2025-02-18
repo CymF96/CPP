@@ -29,6 +29,7 @@ int main(int ac, char **av) {
 		printSequence(vec);
 	} catch (std::exception &e) {
 		std::cerr << BOLD RED "Error: " RESET << e.what();
+		return (1);
 	}
 
 	clock_t start = clock();
@@ -50,7 +51,7 @@ int main(int ac, char **av) {
 		printSequence(deq);
 	} catch (std::exception &e) {
 		std::cerr << "Error: " << e.what() << std::endl;
-		return 1;
+		return (1);
 	}
 
 	start = clock();
