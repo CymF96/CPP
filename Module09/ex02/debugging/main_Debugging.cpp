@@ -34,7 +34,7 @@ int main(int ac, char **av) {
 		std::cerr << "Error: " << e.what() << std::endl;
 		return 1;
 	}
-	PmergeMe<std::deque<int> > deqSort(deq);
+	// PmergeMe<std::deque<int> > deqSort(deq);
 	// std::cout << deqSort;
 	std::cout << std::endl;
 	return 0;

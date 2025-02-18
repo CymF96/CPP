@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe_Debugging.hpp                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:50:22 by cofische          #+#    #+#             */
-/*   Updated: 2025/02/17 14:34:03 by cofische         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:49:29 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ VIterator upperBound(Vcontainer &cont, VIterator bound, int value) {
 			return it;
 		}
 	}
-	return cont.end();
+	return ++bound;
 }
 
 template <typename V>

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PmergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cofische <cofische@student.42london.com    +#+  +:+       +#+        */
+/*   By: cofische <cofische@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 17:50:22 by cofische          #+#    #+#             */
-/*   Updated: 2025/02/17 16:09:15 by cofische         ###   ########.fr       */
+/*   Updated: 2025/02/18 18:49:58 by cofische         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,11 @@ VIterator upperBound(Vcontainer &cont, VIterator bound, int value) {
 	VIterator it = cont.begin();
 
 	for (; it <= bound; ++it) {
-		if (comp(value, *it))
-		{
+		if (comp(value, *it)) {
 			return it;
 		}
 	}
-	return cont.end();
+	return ++bound;
 }
 
 template <typename V>
@@ -83,7 +82,7 @@ class PmergeMe {
 		/******************************/
 		
 		PmergeMe(T &inputContainer) : container(inputContainer) {  
-			FordJohsonAlgo(1);
+			FordJohnsonAlgo(1);
 		}
 		PmergeMe(const PmergeMe &other) : container(other.container) {}
 		PmergeMe& operator=(const PmergeMe &other) {
@@ -104,7 +103,7 @@ class PmergeMe {
 		bool is_odd;
 		Iterator start;
 		Iterator last;
-		Iterator end_nbrOfPairs;
+		Iterator end_pairs;
 
 		/*************************/
 		/********METHODS**********/
@@ -116,16 +115,16 @@ class PmergeMe {
 		//	Once the sequence has been split in pairs group, the sorting part start
 		/****************************************/
 		
-		void FordJohsonAlgo(int nbrInPairs) {
+		void FordJohnsonAlgo(int nbrInPairs) {
 			int nbrOfPairs = container.size() / nbrInPairs;
 			is_odd = nbrOfPairs % 2;
 			if (nbrOfPairs <= 1) return;
 			
 			last = container.begin();
 			std::advance(last, nbrInPairs * (nbrOfPairs) - 1);
-			end_nbrOfPairs = last;
-			std::advance(end_nbrOfPairs, -(nbrOfPairs % 2 == 1 ? nbrInPairs : 0));		
-			Iterator it = end_nbrOfPairs;
+			end_pairs = last;
+			std::advance(end_pairs, -(nbrOfPairs % 2 == 1 ? nbrInPairs : 0));		
+			Iterator it = end_pairs;
 			for (int i = 0; i < nbrOfPairs / 2; ++i) {
 				Iterator right = it;
 				Iterator left = it;
@@ -139,12 +138,12 @@ class PmergeMe {
 			}
 			T odd;
 			if (is_odd) {
-				Iterator it = end_nbrOfPairs + 1;
+				Iterator it = end_pairs + 1;
 				for (int i = 0; i < nbrInPairs; i++) {
 					odd.push_back(*it++);
 				}
 			}
-			FordJohsonAlgo(nbrInPairs * 2);
+			FordJohnsonAlgo(nbrInPairs * 2);
 			containerInitialisation(nbrInPairs, nbrOfPairs, odd);
 		}
 		
@@ -217,7 +216,7 @@ class PmergeMe {
 					main.insert(idx, *pend_it);
 					insertion_nbr--;
 					pend_it = pend.erase(pend_it);
-					if (pend_it != pend.begin()){
+					if (pend_it != pend.begin()) {
 						std::advance(pend_it, -1);	
 					}
 					bound_it = main.begin() + (curr_jacob + insertion_nbr);
@@ -237,8 +236,8 @@ class PmergeMe {
 		void binarySorting(Vec &main, Vec &pend, int nbrInPairs, int nbrOfPairs, T &odd) {
 			last = container.begin();
 			std::advance(last, nbrInPairs * (nbrOfPairs) - 1);
-			end_nbrOfPairs = last;
-			std::advance(end_nbrOfPairs, -(nbrOfPairs % 2 == 1 ? nbrInPairs : 0));
+			end_pairs = last;
+			std::advance(end_pairs, -(nbrOfPairs % 2 == 1 ? nbrInPairs : 0));
 			for (size_t i = 0; i < pend.size(); i++) {
 				it_vec curr_pend = pend.begin();
 				advance(curr_pend, i);
