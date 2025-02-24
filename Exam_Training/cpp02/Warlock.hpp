@@ -5,6 +5,7 @@
 #include <vector>
 #include "ASpell.hpp"
 #include "ATarget.hpp"
+#include "SpellBook.hpp"
 
 class Warlock {
 	public:
@@ -25,6 +26,6 @@ class Warlock {
 		Warlock &operator=(const Warlock &other);
 		std::string name;
 		std::string title;
-		std::vector<ASpell *> spellBook;
+		SpellBook spellBook;
 };
 #endif

@@ -6,6 +6,7 @@
 #include "BrickWall.hpp"
 #include "Polymorph.hpp"
 #include "Fireball.hpp"
+#include "TargetGenerator.hpp"
 
 int main()
 {
@@ -28,4 +29,7 @@ int main()
   richard.introduce();
   richard.launchSpell("Polymorph", *wall);
   richard.launchSpell("Fireball", *wall);
+
+  // delete fireball;
+  // delete polymorph;
 }
