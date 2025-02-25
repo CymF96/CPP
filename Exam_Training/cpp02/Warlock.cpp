@@ -26,9 +26,15 @@ void Warlock::forgetSpell(const std::string &spell) {
 	spellBook.forgetSpell(spell);
 };
 void Warlock::launchSpell(const std::string &spell, const ATarget &target) {
+	const ATarget* targetPtr = &target;
+	if (targetPtr == nullptr) {
+        std::cout << "Error: Target is null. Cannot launch spell." << std::endl;
+        return; // Exit the function if target is null
+    }
 	ASpell *ptr = spellBook.createSpell(spell);
 	ASpell &refPtr = *ptr;
-	target.getHitBySpell((refPtr));
+	if (ptr)
+		target.getHitBySpell((refPtr));
 };
 
 

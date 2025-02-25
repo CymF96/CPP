@@ -9,12 +9,16 @@ TargetGenerator::~TargetGenerator() {
 };
 
 void TargetGenerator::learnTargetType(ATarget *target) {
-	std::vector<ATarget *>::iterator it = targetList.begin();
-	for (; it != targetList.end(); ++it) {
-		if (*it == target)
-			return ;
-	}
-	targetList.push_back(target->clone());
+	if (target) {
+		std::vector<ATarget *>::iterator it = targetList.begin();
+		for (; it != targetList.end(); ++it) {
+			if (*it == target)
+				return ;
+		}
+		targetList.push_back(target->clone());
+	} else
+		std::cout << "Target nullptr\n";
+
 };
 void TargetGenerator::forgetTargetType(const std::string &type) {
 	std::vector<ATarget *>::iterator it = targetList.begin();
@@ -24,7 +28,8 @@ void TargetGenerator::forgetTargetType(const std::string &type) {
 			targetList.erase(it);
 			return ;
 		}
-	}	
+	}
+	std::cout << "Target doens't exit\n";	
 };
 ATarget *TargetGenerator::createTarget(const std::string &type) {
 	std::vector<ATarget *>::iterator it = targetList.begin();

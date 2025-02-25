@@ -9,12 +9,16 @@ SpellBook::~SpellBook() {
 };
 
 void SpellBook::learnSpell(ASpell *spell) {
-	std::vector<ASpell *>::iterator it = spellBook.begin();
-	for (; it != spellBook.end(); ++it) {
-		if (*it == spell)
-			return ;
-	}
-	spellBook.push_back(spell->clone());
+	if (spell) {
+		std::vector<ASpell *>::iterator it = spellBook.begin();
+		for (; it != spellBook.end(); ++it) {
+			if (*it == spell)
+				return ;
+		}
+		spellBook.push_back(spell->clone());
+	} else
+	std::cout << "Error Spell nullptr\n";
+
 };
 void SpellBook::forgetSpell(const std::string &spell) {
 	std::vector<ASpell *>::iterator it = spellBook.begin();
@@ -25,6 +29,7 @@ void SpellBook::forgetSpell(const std::string &spell) {
 			return ;
 		}
 	}
+	std::cout << "Spell not known anyway\n";
 };
 ASpell *SpellBook::createSpell(const std::string &spell) {
 	std::vector<ASpell *>::iterator it = spellBook.begin();
